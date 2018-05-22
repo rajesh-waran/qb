@@ -9,18 +9,16 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 
 	$(function () {
 
-		
-		$("a#google_oauth_login").click(function(){
-			console.log("srini");
+
+		$("a#google_oauth_login").click(function () {
 			const remote = require('electron').remote;
-			const BrowserWindow = remote.BrowserWindow 
-			var win1 = new BrowserWindow({ width: 800, height: 600,frame:false});
-		 
-		  });
-		
-		function sendMessage(refr, ev,refs) {
-			console.log('JESH', refr, ev,refs);
-			var text = refr.val()||refs;
+			const BrowserWindow = remote.BrowserWindow
+			var win1 = new BrowserWindow({ width: 800, height: 600, frame: false });
+
+		});
+
+		function sendMessage(refr, ev, refs) {
+			var text = refr.val() || refs;
 			if (text !== "") {
 				refr.val('');
 
@@ -73,88 +71,79 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 		// 		$(".emoji-wysiwyg-editor").html('');
 		// 	}
 		// });
-		
+
 		$("div.emoji-wysiwyg-editor").keypress(function (e) {
 			if (e.which == 13) {
 				$('.emoji-wysiwyg-editor').val($('.emoji-wysiwyg-editor').html());
 				sendMessage($('.emoji-wysiwyg-editor'), e);
 				$(".emoji-wysiwyg-editor").html('');
 			}
-		});				
+		});
 		//Quick Replies payload button Click
-		$(document).on('click', '.QuickreplybtnPayload', function (e) {			
+		$(document).on('click', '.QuickreplybtnPayload', function (e) {
 			var payloadInput = $(this).data().quickrepliespayload;
-			if(config.eventAllow.indexOf(payloadInput.toString())>=0){
-				processor.askBot(payloadInput, function (error, html) {
-					if (error) {
-						console.log("error occured while processing your Request") //change into some inline fancy display, show error in chat window.
-					}
-					if (html) {
-						msg_container.append(html);
-						utils.scrollSmoothToBottom($('div.chat-body'));
-					}
-				});
-			}
+			processor.askBot(payloadInput, function (error, html) {
+				if (error) {
+					console.log("error occured while processing your Request") //change into some inline fancy display, show error in chat window.
+				}
+				if (html) {
+					msg_container.append(html);
+					utils.scrollSmoothToBottom($('div.chat-body'));
+				}
+			});
 			e.preventDefault();
 		});
 
 		$(document).on('click', '.cardresponsepayload', function (e) {
 			var payloadInput = $(this).data().cardpayloadbutton;
-			if(config.eventAllow.indexOf(payloadInput)>=0){
-				processor.askBot(payloadInput, function (error, html) {
-					if (error) {
-						console.log("error occured while processing your Request") //change into some inline fancy display, show error in chat window.
-					}
-					if (html) {
-						msg_container.append(html);
-						utils.scrollSmoothToBottom($('div.chat-body'));
-					}
-				});
-			}
+			processor.askBot(payloadInput, function (error, html) {
+				if (error) {
+					console.log("error occured while processing your Request") //change into some inline fancy display, show error in chat window.
+				}
+				if (html) {
+					msg_container.append(html);
+					utils.scrollSmoothToBottom($('div.chat-body'));
+				}
+			});
+
 			e.preventDefault();
 		});
 
 		$(document).on('click', '.caroselresponsepayload', function (e) {
 			var payloadInput = $(this).data().carouselpayloadbutton;
 			console.log('Button Payload' + payloadInput);
-			if(config.eventAllow.indexOf(payloadInput)>=0){
-				processor.askBot(payloadInput, function (error, html) {
-					if (error) {
-						console.log("error occured while processing your Request") //change into some inline fancy display, show error in chat window.
-					}
-					if (html) {
-						msg_container.append(html);
-						utils.scrollSmoothToBottom($('div.chat-body'));
 
-					}
-				});
-			}
+			processor.askBot(payloadInput, function (error, html) {
+				if (error) {
+					console.log("error occured while processing your Request") //change into some inline fancy display, show error in chat window.
+				}
+				if (html) {
+					msg_container.append(html);
+					utils.scrollSmoothToBottom($('div.chat-body'));
+
+				}
+			});
+
 			e.preventDefault();
 
-        });
-        
-        $(document).on('click', '.apiQuickreplybtnPayload', function (e) {
+		});
+
+		$(document).on('click', '.apiQuickreplybtnPayload', function (e) {
 			var payloadInput = $(this).data().apiquickrepliespayload;
-			if(config.eventAllow.indexOf(payloadInput.toString())>=0){
-				$('.apiQuickreplybtnPayload').hide();
-				processor.askBot(payloadInput, function (error, html) {
-					if (error) {
-						console.log("error occured while processing your Request") //change into some inline fancy display, show error in chat window.
-					}
-					if (html) {
-						msg_container.append(html);
-						utils.scrollSmoothToBottom($('div.chat-body'));
-					}
-				});
-			}
-			e.preventDefault();			
-		});   
+
+			$('.apiQuickreplybtnPayload').hide();
+			processor.askBot(payloadInput, function (error, html) {
+				if (error) {
+					console.log("error occured while processing your Request") //change into some inline fancy display, show error in chat window.
+				}
+				if (html) {
+					msg_container.append(html);
+					utils.scrollSmoothToBottom($('div.chat-body'));
+				}
+			});
+
+			e.preventDefault();
+		});
 	});
 
-});   
-
-		
-		
-		
-
-    
+});
