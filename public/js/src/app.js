@@ -64,18 +64,20 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 			sendMessage($("#btn-input"), e);
 			$(".emoji-wysiwyg-editor").html('');
 		});
-		//Chatbox Send message
+		// //Chatbox Send message
 		// $("#btn-input").keypress(function (e) {
+		// 	console.log('POLL', $('#btn-input').val());
 		// 	if (e.which == 13) {
 
 		// 		sendMessage($(this), e);
 		// 		$(".emoji-wysiwyg-editor").html('');
 		// 	}
-		// });	
-		$(".emoji-wysiwyg-editor").keypress(function (e) {
+		// });
+		
+		$("div.emoji-wysiwyg-editor").keypress(function (e) {
 			if (e.which == 13) {
-
-				sendMessage($(this), e);
+				$('.emoji-wysiwyg-editor').val($('.emoji-wysiwyg-editor').html());
+				sendMessage($('.emoji-wysiwyg-editor'), e);
 				$(".emoji-wysiwyg-editor").html('');
 			}
 		});				
