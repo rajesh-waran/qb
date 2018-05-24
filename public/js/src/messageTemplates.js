@@ -43,11 +43,11 @@ define(["utils", "settings"], function (utils, settings) {
         let html = `<li class="list-group-item background-color-custom">
 
             <div class="media-body bot-txt-space animated fadeInLeft">`
-        if (data.responseIndex) {
+        //if (data.responseIndex) {
             html += `<img style="border-radius:50%;border:2px solid white;float: left;margin-right: 10px;" width="40" height="40" src='${settings.botAvatar}'/><p class="list-group-item-text-bot beforeAfter">${data.payload}</p>`;
-        } else {
-            html += `<img style="border-radius:50%;float: left;margin-right: 10px;" width="40" height="40" src='avatar/blank.ico'/><p class="list-group-item-text-bot">` + methods.bullets(data.payload) + `</p>`;
-        }
+        // } else {
+        //     html += `<img style="border-radius:50%;float: left;margin-right: 10px;" width="40" height="40" src='avatar/blank.ico'/><p class="list-group-item-text-bot">` + methods.bullets(data.payload) + `</p>`;
+        // }
 
         if (data.bottomIcon) {
             html += `<p class="bot-res-timestamp"><small> ${data.time}</small></p>`;
@@ -209,11 +209,14 @@ define(["utils", "settings"], function (utils, settings) {
                     if (data.payload[i].imageUrl) {
                         carousel += `<a href="#" id="carousel-thumbnail-modal" class="thumbnail custom-image-wrap">
                                 <img data-target="#center-dialog" data-toggle="modal" class="img-circle" src="${data.payload[i].imageUrl}" data-src="${data.payload[i].imageUrl}" alt="Image" style="max-width:100%;">
-                            </a><div class="commonHeight"><h3 class="carousel-body" style="margin-top:4px !important"><p class="carousel-title">`+ methods.bullets(data.payload[i].title) + `</p>
-                            <p class="carousel-subtitle carouselScrollbar">`+ methods.bullets(data.payload[i].subtitle) + `</p></div>`
+                            </a><div class="commonHeight"><h3 class="carousel-body" style="margin-top:4px !important"><p class="carousel-title">`+ methods.bullets(data.payload[i].title) + `</p>`
                     } else {
-                        carousel += `<div class="commonHeight" style="border-radius:15px;"><h3 class="carousel-body" style="border-radius:15px;margin-top:4px !important"><p class="carousel-title">` + methods.bullets(data.payload[i].title) + `</p>
-                            <p class="carousel-subtitle carouselScrollbar">`+ methods.bullets(data.payload[i].subtitle) + `</p></div>`
+                        carousel += `<div class="commonHeight" style="border-radius:15px;"><h3 class="carousel-body" style="border-radius:15px;margin-top:4px !important"><p class="carousel-title">` + methods.bullets(data.payload[i].title) + `</p>`                        
+                    }
+                    if(data.payload[i].subtitle){
+                        carousel += `<p class="carousel-subtitle carouselScrollbar">`+ methods.bullets(data.payload[i].subtitle) + `</p></div>`
+                    } else{
+                        carousel+= `</div>`
                     }
                     if (data.buttons && data.payload[i].type == 1) {
                         for (var j = 0; j < data.payload[i].buttons.length; j++) {
@@ -232,12 +235,15 @@ define(["utils", "settings"], function (utils, settings) {
                     if (data.payload[i].imageUrl) {
                         carousel += `<a href="#" class="thumbnail custom-image-wrap">
                               <img class="img-circle" src="${data.payload[i].imageUrl}" alt="Image" style="max-width:100%;">
-                          </a><div class="commonHeight" style="border-radius: 0px 0px 15px 15px;"><h3 class="carousel-body" style="border-radius: 0px 0px 15px 15px;margin-top:4px !important"><p class="carousel-title">`+ methods.bullets(data.payload[i].title) + `</p>
-                          <p class="carousel-subtitle carouselScrollbar">`+ methods.bullets(data.payload[i].subtitle) + `</p>`
+                          </a><div class="commonHeight" style="border-radius: 0px 0px 15px 15px;"><h3 class="carousel-body" style="border-radius: 0px 0px 15px 15px;margin-top:4px !important"><p class="carousel-title">`+ methods.bullets(data.payload[i].title) + `</p>`
                     } else {
-                        carousel += `<div class="commonHeight" style="border-radius:15px;"><h3 class="carousel-body" style="border-radius:15px;margin-top:4px !important"> <p class="carousel-title">` + methods.bullets(data.payload[i].title) + `</p>
-                          <p class="carousel-subtitle carouselScrollbar">`+ methods.bullets(data.payload[i].subtitle) + `</p>`
+                        carousel += `<div class="commonHeight" style="border-radius:15px;"><h3 class="carousel-body" style="border-radius:15px;margin-top:4px !important"> <p class="carousel-title">` + methods.bullets(data.payload[i].title) + `</p>`
                     }
+
+                    if(data.payload[i].subtitle){
+                        carousel += `<p class="carousel-subtitle carouselScrollbar">`+ methods.bullets(data.payload[i].subtitle) + `</p>`;
+                    }
+
                     if (data.buttons && data.payload[i].type == 1) {
                         for (var j = 0; j < data.payload[i].buttons.length; j++) {
                             carousel += `<button type="button" class="btn-carousel btn-info pmd-btn-outline caroselresponsepayload button-custom" data-carouselpayloadButton = "${data.payload[i].buttons[j].postback}" >${data.payload[i].buttons[j].text}</button>`
