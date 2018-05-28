@@ -53,8 +53,6 @@ define(["utils", "settings"], function (utils, settings) {
             html += `<p class="bot-res-timestamp"><small> ${data.time}</small></p>`;
         }
         html += `</div>
-
-
         </li>`;
 
         return html;
