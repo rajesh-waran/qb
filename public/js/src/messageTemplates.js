@@ -28,10 +28,11 @@ define(["utils", "settings"], function (utils, settings) {
             <div class="media-left pull-right animated fadeInRight">
 
             <div class="media-body user-txt-space">
-				<img style="border-radius:50%;border:2px solid white;float: right;margin-right: 10px;" width="40" height="40" src='${settings.userAvatar}'/>
+				<img style="border-radius:50%;border:2px solid white;float: right;margin-right: 10px;" width="32" height="32" src='${settings.userAvatar}'/>
                 <p class="list-group-item-text-user">${data.payload}</p>`;
+                
         if (data.bottomIcon) {
-            html += `<p class="user-timestamp"><small> ${data.time}</small></p>`;
+            html += `<p class="user-timestamp"> ${data.time}</p>`;
         }
         html += `</div></li>`;
 
@@ -44,13 +45,13 @@ define(["utils", "settings"], function (utils, settings) {
 
             <div class="media-body bot-txt-space animated fadeInLeft">`
         //if (data.responseIndex) {
-            html += `<img style="border-radius:50%;border:2px solid white;float: left;margin-right: 10px;" width="40" height="40" src='${settings.botAvatar}'/><p class="list-group-item-text-bot beforeAfter">${data.payload}</p>`;
+            html += `<img style="border-radius:50%;border:2px solid white;float: left;margin-right: 10px;" width="32" height="32" src='${settings.botAvatar}'/><p class="list-group-item-text-bot beforeAfter">${data.payload}</p>`;
         // } else {
         //     html += `<img style="border-radius:50%;float: left;margin-right: 10px;" width="40" height="40" src='avatar/blank.ico'/><p class="list-group-item-text-bot">` + methods.bullets(data.payload) + `</p>`;
         // }
 
         if (data.bottomIcon) {
-            html += `<p class="bot-res-timestamp"><small> ${data.time}</small></p>`;
+            html += `<p class="bot-res-timestamp"> ${data.time}</p>`;
         }
         html += `</div>
         </li>`;
@@ -98,7 +99,7 @@ define(["utils", "settings"], function (utils, settings) {
             }
             html = cardBody + cardButtons + `</div></div>`;
             if (data.bottomIcon) {
-                html += `<p class="bot-res-timestamp-card"><small>${data.time}</small></p>`
+                html += `<p class="bot-res-timestamp-card">${data.time}</p>`
             }
             html += `</div></li>`;
         }
@@ -135,7 +136,7 @@ define(["utils", "settings"], function (utils, settings) {
         }
         quickRepliesHtml += `</div>`;
         if (data.bottomIcon) {
-            quickRepliesHtml += `<p class="bot-res-timestamp-qr"><small> <img style="border-radius:50%;border:2px solid white;" width="20" height="20" src='${settings.botAvatar}'/>${data.time}</small></p>`;
+            quickRepliesHtml += `<p class="bot-res-timestamp-qr"> <img style="border-radius:50%;border:2px solid white;" width="32" height="32" src='${settings.botAvatar}'/>${data.time}</p>`;
         }
         quickRepliesHtml += `</div></li>`
         return quickRepliesHtml;
@@ -160,7 +161,7 @@ define(["utils", "settings"], function (utils, settings) {
         for (let i in qReply) {
             if (qReply[i].platform == "facebook" && qReply[i].type == "2") {
                 if (data.responseIndex) {
-                    apiquickRepliesHtml += `<img style="border-radius:50%;border:2px solid white;float: left;margin-right: 10px;" width="40" height="40" src='${settings.botAvatar}'/>`
+                    apiquickRepliesHtml += `<img style="border-radius:50%;border:2px solid white;float: left;margin-right: 10px;" width="32" height="32" src='${settings.botAvatar}'/>`
                     if (qReply[i].title.trim().length) {
                         apiquickRepliesHtml += `<p class="list-group-item-quick-reply-space beforeAfter">${qReply[i].title}</p>`
                     }
@@ -179,7 +180,7 @@ define(["utils", "settings"], function (utils, settings) {
         }
         apiquickRepliesHtml += `</div>`;
         if (data.bottomIcon) {
-            apiquickRepliesHtml += `<p class="bot-res-timestamp-qr"><small> ${data.time}</small></p>`;
+            apiquickRepliesHtml += `<p class="bot-res-timestamp-qr"> ${data.time}</p>`;
         }
         apiquickRepliesHtml += `</div></li>`;
         return apiquickRepliesHtml;
@@ -187,7 +188,7 @@ define(["utils", "settings"], function (utils, settings) {
     methods.carousel = (data, uniqueId) => {
         var carousel = `<li class="list-group-item background-color-custom animated fadeInLeft">`
         if (data.responseIndex) {
-            carousel += `<img style="border-radius:50%;border:2px solid white;float: left;margin-right: 10px;" width="40" height="40" src='${settings.botAvatar}'/><div id="${uniqueId}" class="beforeAfter carousel slide pmd-card pmd-card-default pmd-z-depth carousel-custom" data-ride="false">`
+            carousel += `<img style="border-radius:50%;border:2px solid white;float: left;margin-right: 10px;" width="32" height="32" src='${settings.botAvatar}'/><div id="${uniqueId}" class="beforeAfter carousel slide pmd-card pmd-card-default pmd-z-depth carousel-custom" data-ride="false">`
         } else {
             carousel += `<img style="border-radius:50%;float: left;margin-right: 10px;" width="40" height="40" src='avatar/blank.ico'/><div id="${uniqueId}" class="carousel slide pmd-card pmd-card-default pmd-z-depth carousel-custom" data-ride="false">`
         }
@@ -263,7 +264,7 @@ define(["utils", "settings"], function (utils, settings) {
         <span class="sr-only">Next</span></a>
 	  </div><!--.Carousel--></div>`;
         if (data.bottomIcon) {
-            carousel += `<p style="bottom: 10px;" class="bot-res-timestamp-card"><small> ${data.time}</small></p>`;
+            carousel += `<p style="bottom: 10px;" class="bot-res-timestamp-card"> ${data.time}</p>`;
         }
         carousel += `</div></li>`;
 
@@ -299,7 +300,7 @@ define(["utils", "settings"], function (utils, settings) {
             }
             html += `</ul>`;
             if (data.bottomIcon) {
-                html += `<p class="bot-res-timestamp-qr"><small> <img style="border-radius:50%;border:2px solid white;" width="20" height="20" src='${settings.botAvatar}'/>${data.time}</small></p>`;
+                html += `<p class="bot-res-timestamp-qr"><img style="border-radius:50%;border:2px solid white;" width="32" height="32" src='${settings.botAvatar}'/>${data.time}</p>`;
             }
             html += `</li>`;
         }
@@ -338,7 +339,7 @@ define(["utils", "settings"], function (utils, settings) {
         }
         html = cardBody + cardButtons + `</div></div>`;
         if (data.bottomIcon) {
-            html += `<p class="bot-res-timestamp-card"><small> <img style="border-radius:50%;border:2px solid white;" width="20" height="20" src='${settings.botAvatar}'/>${data.time}</small></p>`;
+            html += `<p class="bot-res-timestamp-card"> <img style="border-radius:50%;border:2px solid white;" width="32" height="32" src='${settings.botAvatar}'/>${data.time}</p>`;
         }
         html += `</div></li>`;
 

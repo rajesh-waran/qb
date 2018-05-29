@@ -232,7 +232,7 @@ html,body{
 }
 
 .background-color-custom {
-  background-color: #f5f5f5;
+  background-color: #ebeded;
 }
 
 .custom-quick-reply-background {
@@ -249,7 +249,8 @@ html,body{
 
 .user-timestamp {
     font-size: 77%;
-    color: #ada497;
+    color: #777b7c;
+    font-family: Roboto;
     display: inline-block;
     height: 0%;
     text-align: right;
@@ -258,12 +259,14 @@ html,body{
     width: 100%;
     margin-right: 25px;
     float: right;
+    padding-top: 10px;
 }
 
 .bot-res-timestamp {
 
     font-size: 77%;
-    color: #ada497;
+    color: #777b7c;
+    font-family: Roboto;
     display: inline-block;
     height: 0%;
     text-align: left;
@@ -276,35 +279,32 @@ html,body{
 
 .list-group-item-text-user {
         line-height: 1.4;
-        color: #fcf8e3;
-        font-size: .875rem;
+        color: #4d4c4c;
+        font-size: 15px;
         overflow-wrap: break-word;
-        background-color: #333;
-        max-width: 75%;
-        border-radius: 10px;
+        background-color: #e8fcfc;
+        max-width: 84%;
         display: inline-block;
         position: relative;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.21), 0 6px 20px 0 rgba(0, 0, 0, 0);
         float: right;
-        padding: 15px 10px;
-	  
-        margin-right: 12px;
+        padding: 20px;
+        margin-right: 10px;
 }
 
 .list-group-item-text-bot {
 
      line-height: 1.4;
-     color: #f5f5f5;
-     font-size: .875rem;
+     color: #4d4c4c;
+     font-size: 15px;
      overflow-wrap: break-word;
-     background-color: #1e78a5;
-     max-width: 75%;
-     border-radius: 10px;
+     background-color: #fff;
+     max-width: 84%;
      display: inline-block;
      position: relative;
      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.21), 0 6px 20px 0 rgba(0, 0, 0, 0);
-     padding: 15px 10px;
-     margin-right: 12px;
+     padding: 20px;
+     margin-right: 10px;
 }
 
 .bot-txt-reply {
@@ -529,7 +529,7 @@ img.center {
     border-left-color: #333!important;
 }
 
-.list-group-item-text-user::after,.list-group-item-text-user:before {
+/* .list-group-item-text-user::after,.list-group-item-text-user:before {
   top: 18px;
   border: solid transparent;
   content: " ";
@@ -537,7 +537,7 @@ img.center {
   width: 0;
   position: absolute;
   pointer-events: none;
-}
+} */
 .list-group-item-text-user::after {
   border-width: 8px;
   margin-top: 0px;
@@ -556,7 +556,7 @@ img.center {
     border-right-color: #1e78a5 !important;
 }
 
-.beforeAfter::after,.beforeAfter:before {
+/* .beforeAfter::after,.beforeAfter:before {
   top: 18px;
   content: " ";
   height: 0;
@@ -564,7 +564,7 @@ img.center {
   border: solid transparent;
   position: absolute;
   pointer-events: none;
-}
+} */
 .beforeAfter::after {
   border-width: 8px;
   margin-top: 0px;

@@ -13,11 +13,12 @@ define([], function () {
     methods.currentTime = () => {
 
         var currentDate = new Date();
+        var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+        
         var hours = (currentDate.getHours() < 10) ? '0' + currentDate.getHours() : currentDate.getHours();
         var minutes = (currentDate.getMinutes() < 10) ? '0' + currentDate.getMinutes() : currentDate.getMinutes();
         var ampm = hours >= 12 ? 'pm' : 'am';
-
-        return `${hours}:${minutes} ${ampm}`;
+        return `${months[currentDate.getMonth()]} ${currentDate.getDate()}, ${hours}:${minutes} ${ampm}`;
     };
 
     methods.scrollSmoothToBottom = (element) => {

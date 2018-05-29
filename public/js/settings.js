@@ -13,8 +13,8 @@ define({
     applicationTitle: "Quote & Buy",
     userTitle : "Me",
     botTitle : "Quote & Buy",
-    botAvatar : "avatar/B2C.png",
-    userAvatar : "avatar/user.png",
+    botAvatar : "avatar/macy.svg",
+    userAvatar : "avatar/user.svg",
     attachmentUploadURL : "",
     platform : "facebook",
     showHeader: true
