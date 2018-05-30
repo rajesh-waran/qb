@@ -128,7 +128,7 @@ define(["utils", "settings"], function (utils, settings) {
                         }
                         else if (data.payload[i].payload.facebook.quick_replies[j].hasOwnProperty('tab')) {
                             console.log("TAB : " + data.payload[i].payload.facebook.quick_replies[j].tab);
-                            quickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-info QuickreplybtnPayload" onClick="window.open('${data.payload[i].payload.facebook.quick_replies[j].tab}','_blank'); " >${data.payload[i].payload.facebook.quick_replies[j].title}</button>`
+                            quickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-info QuickreplybtnPayload" onClick="window.open('${data.payload[i].payload.facebook.quick_replies[j].tab}','_blank'); " > ${data.payload[i].payload.facebook.quick_replies[j].title}</button>`
                         }
                     }
                 }
@@ -174,7 +174,7 @@ define(["utils", "settings"], function (utils, settings) {
                 }
                 apiquickRepliesHtml += `<div class="quick-replies-buttons" style="align-items: center;justify-content: center;">`
                 for (let j = 0; j < qReply[i].replies.length; j++) {
-                    apiquickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-info .pmd-btn-fab apiQuickreplybtnPayload" data-apiquickRepliesPayload="${qReply[i].replies[j]}">${qReply[i].replies[j]}</button>`
+                    apiquickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-info .pmd-btn-fab apiQuickreplybtnPayload" data-apiquickRepliesPayload="${qReply[i].replies[j]}"><img src="./images/queryTypes/${qReply[i].replies[j].replace(/ /g,'')}.svg" class="img-responsive quick-reply-icon"> <div class="quick-reply-button-text">${qReply[i].replies[j]}</div></button>`
                 }
             }
         }

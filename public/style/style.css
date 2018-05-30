@@ -355,7 +355,7 @@ html,body{
   color: #f5f5f5;
   font-size: .875rem;
   overflow-wrap: break-word;
-  background-color: #1e78a5;
+  background-color: #0097d6;
   max-width: 75%;
   border-radius: 10px;
   display: inline-block;
@@ -371,12 +371,12 @@ html,body{
 }
 
 .pmd-btn-outline.btn-info{
-  color: #1e78a5;
-  background-color: transparent;
-  border: solid 1px #333;
+  color: #4d4c4c;
+  background-color: #fff;
+  
   text-transform: none;
 	outline: none;
-	font-weight:bold;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.21), 0 6px 20px 0 rgba(0, 0, 0, 0)
 }
 .commonHeight{
 	height:125px;	
@@ -384,14 +384,14 @@ html,body{
 }
 .disabled{
       color: #fff !important;
-    background-color: #1e78a5 !important;
+    background-color: #0097d6 !important;
     border: solid 1px #333!important;
 }
 
 .pmd-btn-outline.btn-info:hover, .pmd-btn-outline.btn-info:focus {
   color: #fff;
-  background-color: #1e78a5;
-  border: solid 1px #1e78a5;
+  background-color:#0097d6;
+  border: solid 1px #0097d6;
 }
 
 .carousel-control {
@@ -553,7 +553,7 @@ img.center {
   border-left-color: #333;*/
   
   right: 100%;
-    border-right-color: #1e78a5 !important;
+    border-right-color: #0097d6 !important;
 }
 
 /* .beforeAfter::after,.beforeAfter:before {
@@ -590,7 +590,7 @@ img.center {
 }
 
 .u6 {
-  background-color: rgba(215, 215, 215, 1);
+  background-color:#fff;
   height          : auto;
   padding         : 14px 0;
   display         : flex;
@@ -637,4 +637,30 @@ img.center {
   border-width: 0px;
   width       : 25px;
   height      : 20px;
+}
+
+.textingbox {
+  border-width: 0px;
+  background: inherit;
+  background-color: rgba(215, 215, 215, 1);
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.quick-reply-icon {
+  margin-top  : inherit;
+  margin-left : inherit;
+  margin-right: inherit;
+  float       : left;
+  cursor      : pointer;
+  visibility  : inherit;
+  border-width: 0px;
+  width       : 24px;
+  height      : 24px;
+}
+
+.quick-reply-button-text {
+  display: inline-block;
+  padding: 10px; 
 }
