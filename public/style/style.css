@@ -575,32 +575,36 @@ img.center {
 }
 
 .u5div {
-  border-width: 0px;
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 300px;
-  height: 36px;
-  background: inherit;
-  border: none;
-  border-radius: 0px;
-  -moz-box-shadow: none;
+  border-width      : 0px;
+  position          : absolute;
+  left              : 0px;
+  top               : 0px;
+  width             : 300px;
+  height            : 36px;
+  background        : inherit;
+  border            : none;
+  border-radius     : 0px;
+  -moz-box-shadow   : none;
   -webkit-box-shadow: none;
-  box-shadow: none;
+  box-shadow        : none;
 }
 
 .u6 {
   background-color: rgba(215, 215, 215, 1);
-  height: 60px;
+  height          : auto;
+  padding         : 14px 0;
+  display         : flex;
+  align-items     : center;
 }
 
 #u6font {
-  padding: 15px;
+  padding    : 0;
   font-family: Roboto;
   line-height: normal;
-  font-size: 24px;
+  font-size  : 24px;
   font-weight: 400;
-  text-align: left;
+  text-align : left;
+  margin     : inherit;
 }
 
 .float-right {
@@ -612,25 +616,25 @@ img.center {
 }
 
 .close-icon-close {
-    margin-top: 24px;
-    margin-left: 24px;
-    margin-right: 10px;
-    float:right;
-    cursor: pointer;
-    visibility: inherit;
-    border-width: 0px;
-    width: 25px;
-    height: 20px;
+  margin-top  : inherit;
+  margin-left : inherit;
+  margin-right: inherit;
+  float       : right;
+  cursor      : pointer;
+  visibility  : inherit;
+  border-width: 0px;
+  width       : 25px;
+  height      : 20px;
 }
 
 .close-icon-expand {
-  margin-top: 24px;
-  margin-left: 24px;
-  margin-right: 6px;
-  float:right;
-  cursor: pointer;
-  visibility: inherit;
+  margin-top  : inherit;
+  margin-left : inherit;
+  margin-right: 15px;
+  float       : right;
+  cursor      : pointer;
+  visibility  : inherit;
   border-width: 0px;
-  width: 25px;
-  height: 20px;
+  width       : 25px;
+  height      : 20px;
 }
