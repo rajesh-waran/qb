@@ -23,9 +23,9 @@ html,body{
 }
 
 .chat-body {
-    height: 436px;
+    height: 382px;
     overflow-y: auto;
-    background-color: #f5f5f5;
+    background-color: #ebeded;
     display: block;
     overflow-x: hidden;
     border-bottom: 2px solid rgba(204, 204, 204, 0.59);
