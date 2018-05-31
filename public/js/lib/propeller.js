@@ -363,8 +363,8 @@ $(document).ready(function () {
 				}
 			}
 			var $expandable = $(this).attr("data-expandable"),
-			    $expanded = $(this).attr("aria-expanded"),
-			    $current = $(this).parent().parent().parent().parent().attr("id");
+				$expanded = $(this).attr("aria-expanded"),
+				$current = $(this).parent().parent().parent().parent().attr("id");
 			if ($expandable == "false") {
 				if ($expanded == "true") {
 					//alert("not exp closed")
@@ -417,13 +417,13 @@ $(document).ready(function () {
 $(document).ready(function () {
 	$(".pmd-alert-toggle").click(function () {
 		var $positionX = $(this).attr("data-positionX"),
-		    $positionY = $(this).attr("data-positionY"),
-		    $dataEffect = $(this).attr("data-effect"),
-		    $dataMessage = $(this).attr("data-message"),
-		    $dataType = $(this).attr("data-type"),
-		    $actionText = $(this).attr("data-action-text"),
-		    $action = $(this).attr("data-action"),
-		    $duration;
+			$positionY = $(this).attr("data-positionY"),
+			$dataEffect = $(this).attr("data-effect"),
+			$dataMessage = $(this).attr("data-message"),
+			$dataType = $(this).attr("data-type"),
+			$actionText = $(this).attr("data-action-text"),
+			$action = $(this).attr("data-action"),
+			$duration;
 
 		if ($(window).width() < 768) {
 			$positionX = "center";
@@ -598,8 +598,8 @@ $(document).ready(function () {
 
 			var $this = $(this),
 
-			// $tabSet,
-			$wrapper = $('.pmd-tabs-scroll-container');
+				// $tabSet,
+				$wrapper = $('.pmd-tabs-scroll-container');
 
 			var widthOfList = function widthOfList() {
 				var itemsWidth = 0;
@@ -617,7 +617,7 @@ $(document).ready(function () {
 
 				if ($this.find('ul.nav-tabs').hasClass("nav-justified")) {
 					$this.find('ul.nav-tabs').width("100%");
-				} else if ($this.hasClass("notVisible")) {} else {
+				} else if ($this.hasClass("notVisible")) { } else {
 					$this.find('ul.nav-tabs').width(widthOfList());
 				}
 			};
@@ -631,9 +631,9 @@ $(document).ready(function () {
 				if ($this.outerWidth() < widthOfList()) {
 
 					var navScrolledRight = $this.find('.pmd-tabs-scroll-container').scrollLeft(),
-					    navWrapWidth = $this.width(),
-					    navWidth = $this.find(".nav-tabs").width(),
-					    ammountRight = navWidth - navScrolledRight - navWrapWidth;
+						navWrapWidth = $this.width(),
+						navWidth = $this.find(".nav-tabs").width(),
+						ammountRight = navWidth - navScrolledRight - navWrapWidth;
 
 					if (ammountRight > 0) {
 						$this.find('.pmd-tabs-scroll-right').show();
@@ -645,7 +645,7 @@ $(document).ready(function () {
 				}
 				if (getLeftPosi() < 0) {
 					var navScrolledLeft = $this.find('.pmd-tabs-scroll-container').scrollLeft(),
-					    ammountLeft = navScrolledLeft;
+						ammountLeft = navScrolledLeft;
 					if (ammountLeft > 0) {
 						//		$this.find('.pmd-tabs-scroll-container').css('padding-left', $buttonWidth + 'px');
 						$this.find('.pmd-tabs-scroll-left').show();
@@ -658,14 +658,14 @@ $(document).ready(function () {
 			};
 			var activeTabCenter = function activeTabCenter() {
 				var $tabWidth = $this.outerWidth(),
-				    $middlePosition = $tabWidth / 2,
-				    $tabWrapperLeft = $this.offset().left,
-				    $sliderActive = $this.find('ul li.active'),
-				    $activeWidth = $sliderActive.outerWidth(),
-				    $tabHalfWidth = $activeWidth / 2,
-				    $tableftScroll = $this.find('.pmd-tabs-scroll-container').scrollLeft(),
-				    $tableftPosi = $this.find('ul li.active').offset().left,
-				    $tabCenterPosi = $tableftPosi - $middlePosition - $tabWrapperLeft + $tableftScroll + $tabHalfWidth;
+					$middlePosition = $tabWidth / 2,
+					$tabWrapperLeft = $this.offset().left,
+					$sliderActive = $this.find('ul li.active'),
+					$activeWidth = $sliderActive.outerWidth(),
+					$tabHalfWidth = $activeWidth / 2,
+					$tableftScroll = $this.find('.pmd-tabs-scroll-container').scrollLeft(),
+					$tableftPosi = $this.find('ul li.active').offset().left,
+					$tabCenterPosi = $tableftPosi - $middlePosition - $tabWrapperLeft + $tableftScroll + $tabHalfWidth;
 				$this.find('.pmd-tabs-scroll-container').animate({ scrollLeft: $tabCenterPosi }, 1);
 			};
 			appendulwidth();
@@ -683,12 +683,12 @@ $(document).ready(function () {
 			/*******************/
 			var sliderLoad = function sliderLoad() {
 				var $slider = $this.find('.pmd-tab-active-bar'),
-				    $sliderActive = $this.find('ul li.active'),
-				    $isX = $sliderActive.offset().left,
-				    $navX = $this.find(".nav").offset().left,
-				    $wrapperLeft = $this.offset().left,
-				    $sliderLeft = $isX - $wrapperLeft,
-				    $finalPossion = $wrapperLeft - $navX + $isX - $wrapperLeft;
+					$sliderActive = $this.find('ul li.active'),
+					$isX = $sliderActive.offset().left,
+					$navX = $this.find(".nav").offset().left,
+					$wrapperLeft = $this.offset().left,
+					$sliderLeft = $isX - $wrapperLeft,
+					$finalPossion = $wrapperLeft - $navX + $isX - $wrapperLeft;
 
 				if ($navX < $wrapperLeft) {
 					$slider.width($sliderActive.width() + "px").css("left", $finalPossion + "px");
@@ -697,8 +697,8 @@ $(document).ready(function () {
 				}
 				$this.find("ul li").click(function () {
 					var $thisWidth = $(this).width() + "px",
-					    $newLeft = $(this).offset().left - $wrapperLeft,
-					    $navX = $(this).closest(".nav").offset().left;
+						$newLeft = $(this).offset().left - $wrapperLeft,
+						$navX = $(this).closest(".nav").offset().left;
 					$finalPossion = $wrapperLeft - $navX + $newLeft;
 
 					$slider.width($thisWidth).css("left", $finalPossion + "px");
@@ -714,11 +714,11 @@ $(document).ready(function () {
 			/*******************/
 			$this.find('.pmd-tabs-scroll-right').on("click", function () {
 				var $tabSet = '',
-				    $wrapper = $(this).prev(".pmd-tabs-scroll-container"),
-				    $tab = $wrapper.find(".nav-tabs li"),
-				    $thisWidht = $(this).outerWidth(),
-				    $navCotainer = $this.outerWidth(),
-				    $wrapperRight = $this.offset().left + $navCotainer;
+					$wrapper = $(this).prev(".pmd-tabs-scroll-container"),
+					$tab = $wrapper.find(".nav-tabs li"),
+					$thisWidht = $(this).outerWidth(),
+					$navCotainer = $this.outerWidth(),
+					$wrapperRight = $this.offset().left + $navCotainer;
 
 				$tab.each(function () {
 					var SuspectTabLeft = $(this).offset().left;
@@ -746,10 +746,10 @@ $(document).ready(function () {
 			/*******************/
 			$this.find('.pmd-tabs-scroll-left').on("click", function () {
 				var $wrapper = $(this).next(".pmd-tabs-scroll-container"),
-				    $tab = $wrapper.find(".nav-tabs li"),
-				    $thisWidht = $(this).outerWidth(),
-				    $wrapperLeft = $this.offset().left,
-				    $tabSetLeft = '';
+					$tab = $wrapper.find(".nav-tabs li"),
+					$thisWidht = $(this).outerWidth(),
+					$wrapperLeft = $this.offset().left,
+					$tabSetLeft = '';
 
 				$tab.each(function () {
 					var SuspectTabLeft = $(this).offset().left;

@@ -308,3 +308,39 @@ float:left;
 {
   padding-left: 2px !important; 
 }
+
+.send-button {
+  background-color: #fff !important;
+  box-shadow: none !important;
+  margin-top: 11px !important;
+  margin-left: 5px;
+}
+
+.padding-10px {
+  padding: 10px;
+}
+
+.btn-test.active, .btn-test:active, .dropdown-toggle.btn-test.active, .dropdown-toggle.btn-test:active {
+  background-color : #fff !important;
+  padding: 15px !important;
+  border : solid 1px #03a9f4 !important;
+  color : #4d4c4c ;
+  text-transform: none !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.21), 0 6px 20px 0 rgba(0, 0, 0, 0)
+}
+
+.btn-test:hover, .dropdown-toggle.btn-test:hover {
+  background-color : #03a9f4 !important;
+  padding: 15px !important;
+  color : #fff ;
+  text-transform: none !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.21), 0 6px 20px 0 rgba(0, 0, 0, 0)
+}
+
+.btn-test, .dropdown-toggle.btn-test {
+  background-color : #03a9f4 !important;
+  padding: 15px !important;
+  color : #fff ;
+  text-transform: none !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.21), 0 6px 20px 0 rgba(0, 0, 0, 0)
+}

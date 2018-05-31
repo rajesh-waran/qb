@@ -9,7 +9,7 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 
 	$(function () {
 
-
+		let inputArr = [];
 		$("a#google_oauth_login").click(function () {
 			const remote = require('electron').remote;
 			const BrowserWindow = remote.BrowserWindow
@@ -51,7 +51,17 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 			throw new Error("Message processing manager is not defined!");
 		}
 
+		// $("button").on('click', ".apiMultipleQuickreplybtnPayload", function (e) {
+		// 	alert('sss');
+		// 	$(this).toggleClass("active");
+		// });
+		// $("button").on('click', function (e) {
+		// 	alert('sss');
+		// 	$(this).toggleClass("active");
+		// });
+
 		var msg_container = $("ul#msg_container");
+		console.log('OOOO ', msg_container);
 		if (msg_container.find('li').length == 0) {
 			msg_container.siblings("h1").removeClass('hidden');
 		} else {
@@ -79,6 +89,8 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 				$(".emoji-wysiwyg-editor").html('');
 			}
 		});
+
+		
 		//Quick Replies payload button Click
 		$(document).on('click', '.QuickreplybtnPayload', function (e) {
 			var payloadInput = $(this).data().quickrepliespayload;
@@ -144,6 +156,45 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 
 			e.preventDefault();
 		});
+
+		$(document).on('click', '.apiMultipleQuickreplybtnPayload', function (e) {
+
+			var payloadInput = $(this).data().apimultiplequickrepliespayload;
+			if (inputArr.indexOf(payloadInput) == -1) {
+				inputArr.push(payloadInput);
+			} else {
+				inputArr.splice(inputArr.indexOf(payloadInput), 1);
+			}
+			console.log('OKOK ', inputArr);
+			e.preventDefault();
+		});
+
+		$(document).on('click', '.multiple-click', function (r) {
+
+			$('.apiMultipleQuickreplybtnPayload').hide();
+			$('.multiple-click').hide();
+			processor.askBot(inputArr.toString(), function (error, html) {
+				if (error) {
+					console.log("error occured while processing your Request") //change into some inline fancy display, show error in chat window.
+				}
+				if (html) {
+					msg_container.append(html);
+					utils.scrollSmoothToBottom($('div.chat-body'));
+				}
+			});
+
+		});
+
+		$(document).on('click', function (e) {
+			$('[data-toggle="popover"],[data-original-title]').each(function () {
+				//the 'is' for buttons that trigger popups
+				//the 'has' for icons within a button that triggers a popup
+				if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {                
+					(($(this).popover('hide').data('bs.popover')||{}).inState||{}).click = false  // fix for BS 3.3.6
+				}
+			});
+		});
+
 	});
 
 });

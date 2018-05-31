@@ -30,7 +30,7 @@ define(["utils", "settings"], function (utils, settings) {
             <div class="media-body user-txt-space">
 				<img style="border-radius:50%;border:2px solid white;float: right;margin-right: 10px;" width="32" height="32" src='${settings.userAvatar}'/>
                 <p class="list-group-item-text-user">${data.payload}</p>`;
-                
+
         if (data.bottomIcon) {
             html += `<p class="user-timestamp"> ${data.time}</p>`;
         }
@@ -45,7 +45,7 @@ define(["utils", "settings"], function (utils, settings) {
 
             <div class="media-body bot-txt-space animated fadeInLeft">`
         //if (data.responseIndex) {
-            html += `<img style="border-radius:50%;border:2px solid white;float: left;margin-right: 10px;" width="32" height="32" src='${settings.botAvatar}'/><p class="list-group-item-text-bot beforeAfter">${data.payload}</p>`;
+        html += `<img style="border-radius:50%;border:2px solid white;float: left;margin-right: 10px;" width="32" height="32" src='${settings.botAvatar}'/><p class="list-group-item-text-bot beforeAfter">${data.payload}</p>`;
         // } else {
         //     html += `<img style="border-radius:50%;float: left;margin-right: 10px;" width="40" height="40" src='avatar/blank.ico'/><p class="list-group-item-text-bot">` + methods.bullets(data.payload) + `</p>`;
         // }
@@ -141,17 +141,11 @@ define(["utils", "settings"], function (utils, settings) {
         quickRepliesHtml += `</div></li>`
         return quickRepliesHtml;
     }
-    methods.quickrepliesfromapiai = (data) => {
+
+    methods.multiplequickreplyfromapiai = (data) => {
         var apiquickRepliesHtml = `<li class="list-group-item background-color-custom">
 
         <div class="media-body animated fadeInLeft">`
-        // <div class="media-left">
-        //     <a href="javascript:void(0);" class="avatar-list-img">
-        //     <img class="img-responsive" src="${data.senderAvatar}">
-        //     </a>
-        // </div>
-        // <div class="media-body">
-        // <h3 class="list-group-item-heading">${data.senderName}</h3>`;
         let qReply;
         if (data.payload) {
             qReply = data.payload;
@@ -172,9 +166,68 @@ define(["utils", "settings"], function (utils, settings) {
                     }
 
                 }
-                apiquickRepliesHtml += `<div class="quick-replies-buttons" style="align-items: center;justify-content: center;">`
+                apiquickRepliesHtml += `<div class="quick-replies-buttons" style="align-items: center;justify-content: center;"  data-toggle="buttons">`
                 for (let j = 0; j < qReply[i].replies.length; j++) {
-                    apiquickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-info .pmd-btn-fab apiQuickreplybtnPayload" data-apiquickRepliesPayload="${qReply[i].replies[j]}"><img src="./images/queryTypes/${qReply[i].replies[j].replace(/ /g,'')}.svg" class="img-responsive quick-reply-icon"> <div class="quick-reply-button-text">${qReply[i].replies[j]}</div></button>`
+                    apiquickRepliesHtml += `<label class="btn btn-test padding-10px active apiMultipleQuickreplybtnPayload" data-apiMultiplequickRepliesPayload="${qReply[i].replies[j]}">
+                    <input type="checkbox" name="options[]" checked="checked" > ${qReply[i].replies[j]}
+                </label>`;
+                    //apiquickRepliesHtml += `<button type="button" class="btn btn-primary active apiMultipleQuickreplybtnPayload" data-apiMultiplequickRepliesPayload="${qReply[i].replies[j]}"><div class="quick-reply-button-text">${qReply[i].replies[j]}</button>`
+                }
+                apiquickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-success .pmd-btn-fab multiple-click"><div class="quick-reply-button-text">Choose</button>`
+            }
+        }
+        apiquickRepliesHtml += `</div>`;
+        if (data.bottomIcon) {
+            apiquickRepliesHtml += `<p class="bot-res-timestamp-qr"> ${data.time}</p>`;
+        }
+        apiquickRepliesHtml += `</div></li>`;
+        return apiquickRepliesHtml;
+    }
+
+    methods.quickrepliesfromapiai = (data) => {
+        
+        var apiquickRepliesHtml = `<li class="list-group-item background-color-custom">
+
+        <div class="media-body animated fadeInLeft">`
+        // <div class="media-left">
+        //     <a href="javascript:void(0);" class="avatar-list-img">
+        //     <img class="img-responsive" src="${data.senderAvatar}">
+        //     </a>
+        // </div>
+        // <div class="media-body">
+        // <h3 class="list-group-item-heading">${data.senderName}</h3>`;
+        let qReply;
+        if (data.payload) {
+            qReply = data.payload;
+        } else {
+            qReply = data;
+        }
+        console.log('LLL ',JSON.stringify(qReply));
+        for (let i in qReply) {
+            if (qReply[i].platform == "facebook" && qReply[i].type == "2") {
+                if (data.responseIndex) {
+                    apiquickRepliesHtml += `<img style="border-radius:50%;border:2px solid white;float: left;margin-right: 10px;" width="32" height="32" src='${settings.botAvatar}'/>`
+                    if (qReply[i].title.trim().length) {
+                        apiquickRepliesHtml += `<p class="list-group-item-quick-reply-space beforeAfter">${qReply[i].title}</p>`
+                    }
+                } else {
+                    //apiquickRepliesHtml+=	`<img style="border-radius:50%;float: left;margin-right: 10px;" width="40" height="40" src='avatar/blank.ico'/>`
+                    if (qReply[i].title.trim().length) {
+                        apiquickRepliesHtml += `<img style="border-radius:50%;float: left;margin-right: 10px;" width="40" height="40" src='avatar/blank.ico'/><p class="list-group-item-quick-reply-space">${qReply[i].title}</p>`
+                    }
+
+                }
+                apiquickRepliesHtml += `<div class="quick-replies-buttons" style="align-items: center;justify-content: center;">`
+                console.log('FEDERER ', qReply[i].replies.indexOf("Risk Class"), qReply[i].replies);
+
+                if (qReply[i].replies.indexOf("Risk Class") != -1) {
+                    for (let j = 0; j < qReply[i].replies.length; j++) {
+                            apiquickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-info .pmd-btn-fab apiQuickreplybtnPayload" data-apiquickRepliesPayload="${qReply[i].replies[j]}"><img src="./images/queryTypes/${qReply[i].replies[j].replace(/ /g, '')}.svg" class="img-responsive quick-reply-icon"> <div class="quick-reply-button-text">${qReply[i].replies[j]}</div></button>`
+                    }
+                } else {
+                    for (let j = 0; j < qReply[i].replies.length; j++) {
+                            apiquickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-info .pmd-btn-fab apiQuickreplybtnPayload" data-apiquickRepliesPayload="${qReply[i].replies[j]}">${qReply[i].replies[j]}</button>`
+                    }
                 }
             }
         }
@@ -210,12 +263,12 @@ define(["utils", "settings"], function (utils, settings) {
                                 <img data-target="#center-dialog" data-toggle="modal" class="img-circle" src="${data.payload[i].imageUrl}" data-src="${data.payload[i].imageUrl}" alt="Image" style="max-width:100%;">
                             </a><div class="commonHeight"><h3 class="carousel-body" style="margin-top:4px !important"><p class="carousel-title">`+ methods.bullets(data.payload[i].title) + `</p>`
                     } else {
-                        carousel += `<div class="commonHeight" style="border-radius:15px;"><h3 class="carousel-body" style="border-radius:15px;margin-top:4px !important"><p class="carousel-title">` + methods.bullets(data.payload[i].title) + `</p>`                        
+                        carousel += `<div class="commonHeight" style="border-radius:15px;"><h3 class="carousel-body" style="border-radius:15px;margin-top:4px !important"><p class="carousel-title">` + methods.bullets(data.payload[i].title) + `</p>`
                     }
-                    if(data.payload[i].subtitle){
-                        carousel += `<p class="carousel-subtitle carouselScrollbar">`+ methods.bullets(data.payload[i].subtitle) + `</p></div>`
-                    } else{
-                        carousel+= `</div>`
+                    if (data.payload[i].subtitle) {
+                        carousel += `<p class="carousel-subtitle carouselScrollbar">` + methods.bullets(data.payload[i].subtitle) + `</p></div>`
+                    } else {
+                        carousel += `</div>`
                     }
                     if (data.buttons && data.payload[i].type == 1) {
                         for (var j = 0; j < data.payload[i].buttons.length; j++) {
@@ -239,8 +292,8 @@ define(["utils", "settings"], function (utils, settings) {
                         carousel += `<div class="commonHeight" style="border-radius:15px;"><h3 class="carousel-body" style="border-radius:15px;margin-top:4px !important"> <p class="carousel-title">` + methods.bullets(data.payload[i].title) + `</p>`
                     }
 
-                    if(data.payload[i].subtitle){
-                        carousel += `<p class="carousel-subtitle carouselScrollbar">`+ methods.bullets(data.payload[i].subtitle) + `</p>`;
+                    if (data.payload[i].subtitle) {
+                        carousel += `<p class="carousel-subtitle carouselScrollbar">` + methods.bullets(data.payload[i].subtitle) + `</p>`;
                     }
 
                     if (data.buttons && data.payload[i].type == 1) {
@@ -333,7 +386,6 @@ define(["utils", "settings"], function (utils, settings) {
                 else {
                     cardButtons += `<button type="button"  class="btn btn-primary infocard-btn-custom webview"  onClick="window.open('https://fast-reef-26757.herokuapp.com/${data.payload.buttons[j].url}','chat70994705','width=400,height=600,resizable=yes');$('.webview').hide();return false;" >${data.payload.buttons[j].title}</button>`
                 }
-
             }
             cardButtons += `</div>`
         }
