@@ -52,35 +52,37 @@ router.post('/dialogflowAPI', function (req, res) {
 			} else if(body.result && body.result.action && body.result.action == "selectDeductible" || body.result && body.result.action && body.result.action == "others"){
 				body.result.fulfillment.messages[0].speech = body.result.fulfillment.messages[0].speech.replace('Click here', '<a>Click here</a>')
 				res.json(body).end();
-			}
-			// } else if(body.result && body.result.action && body.result.action =="riskClass"){
+			
+			} else if(body.result && body.result.action && body.result.action =="riskClass"){
 				
-			// 	let riskClass = body.result.parameters && body.result.parameters.RiskClass ? body.result.parameters.RiskClass : null;
-				
-			// 	if(riskClass){
+				let riskClass = body.result.parameters && body.result.parameters.RiskClass ? body.result.parameters.RiskClass : null;
+				console.log('YEAH', riskClass, body.result.parameters);
+				if(riskClass){
 
-			// 		var options = {
-			// 			method: 'GET',
-			// 			url: "",
-			// 			headers: {
-			// 				"Authorization": "Bearer " + config.accessToken
-			// 			},
-			// 			body: {},
-			// 			json: true
-			// 		};
-			// 		request(options, function (error, response, body) {
-			// 			if (error) {
-			// 				console.log('ERROR In API CALL');
-			// 				res.json(body).end();
-			// 			} else {
-			// 				body.result.fulfillment.messages[0].speech = body.result.fulfillment.messages[0].speech.replace('Candy & Confectionery Products Manufacturing', count+' coverage');
-			// 				res.json(body).end();
-			// 			}
-			// 		});					
-			// 	} else {
-			// 		res.json(body).end();
-			// 	}
-			// } 
+					var options = {
+						method: 'GET',
+						url: "http://10.76.1.53:7999/aa/industry?industryCode="+ riskClass,
+						headers: {
+						},
+						body: {},
+						json: true
+					};
+					request(options, function (error, response, responseBody) {
+						if (error) {
+							console.log('ERROR IN GUIDEWIRE API CALL');
+							res.json(body).end();
+						} else {
+							console.log('SUCCESS IN GUIDEWIRE API CALL', response, responseBody);
+							if(responseBody && responseBody.description){
+								body.result.fulfillment.messages[0].speech = body.result.fulfillment.messages[0].speech.replace('Candy & Confectionery Products Manufacturing', responseBody.description);
+							}
+							res.json(body).end();
+						}
+					});					
+				} else {
+					res.json(body).end();
+				}
+			} 
 			else{
 				res.json(body).end();
 			}
