@@ -666,3 +666,22 @@ img.center {
   display: inline-block;
   padding: 10px; 
 }
+
+.abs {
+  position: absolute;
+  left : 0;
+  bottom : -5px;
+  min-width : 100px;
+ }
+ .list-group-item-text-user {
+  margin-bottom: 31px;
+ }
+ .receiver {
+  position : absolute;
+  right : 0;
+  display : block;
+  text-align: right;
+ }
+ .list-group-item-text-bot {
+  margin-bottom: 30px;
+ }

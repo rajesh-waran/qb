@@ -28,12 +28,12 @@ define(["utils", "settings"], function (utils, settings) {
             <div class="media-left pull-right animated fadeInRight">
 
             <div class="media-body user-txt-space">
-				<img style="border-radius:50%;border:2px solid white;float: right;margin-right: 10px;" width="32" height="32" src='${settings.userAvatar}'/>
-                <p class="list-group-item-text-user">${data.payload}</p>`;
+            <img style="border-radius:50%;border:2px solid white;float: right;margin-right: 10px;" width="32" height="32" src='${settings.userAvatar}'/>
+            <p class="list-group-item-text-user">${data.payload} <span class="bot-res-timestamp abs">${data.time}</span></p>`;
 
-        if (data.bottomIcon) {
-            html += `<p class="user-timestamp"> ${data.time}</p>`;
-        }
+        // if (data.bottomIcon) {
+        //     html += `<p class="user-timestamp"> ${data.time}</p>`;
+        // }
         html += `</div></li>`;
 
         return html;
@@ -42,20 +42,21 @@ define(["utils", "settings"], function (utils, settings) {
     //Plain Text Template
     methods.plaintext = (data) => {
         let html = `<li class="list-group-item background-color-custom">
-
-            <div class="media-body bot-txt-space animated fadeInLeft">`
+       
+        <div class="media-body bot-txt-space animated fadeInLeft">`
         //if (data.responseIndex) {
-        html += `<img style="border-radius:50%;border:2px solid white;float: left;margin-right: 10px;" width="32" height="32" src='${settings.botAvatar}'/><p class="list-group-item-text-bot beforeAfter">${data.payload}</p>`;
+        html += `<img style="border-radius:50%;border:2px solid white;float: left;margin-right: 10px;" width="32" height="32" src='${settings.botAvatar}'/>
+        <p class="list-group-item-text-bot beforeAfter">${data.payload} <span class="bot-res-timestamp abs receiver"> ${data.time}</span></p>`;
         // } else {
-        //     html += `<img style="border-radius:50%;float: left;margin-right: 10px;" width="40" height="40" src='avatar/blank.ico'/><p class="list-group-item-text-bot">` + methods.bullets(data.payload) + `</p>`;
+        // html += `<img style="border-radius:50%;float: left;margin-right: 10px;" width="40" height="40" src='avatar/blank.ico'/><p class="list-group-item-text-bot">` + methods.bullets(data.payload) + `</p>`;
         // }
-
-        if (data.bottomIcon) {
-            html += `<p class="bot-res-timestamp"> ${data.time}</p>`;
-        }
+       
+        // if (data.bottomIcon) {
+        // html += `<p class="bot-res-timestamp"> ${data.time}</p>`;
+        // }
         html += `</div>
         </li>`;
-
+       
         return html;
     }
 
@@ -177,9 +178,9 @@ define(["utils", "settings"], function (utils, settings) {
             }
         }
         apiquickRepliesHtml += `</div>`;
-        if (data.bottomIcon) {
-            apiquickRepliesHtml += `<p class="bot-res-timestamp-qr"> ${data.time}</p>`;
-        }
+        // if (data.bottomIcon) {
+        //     apiquickRepliesHtml += `<p class="bot-res-timestamp-qr"> ${data.time}</p>`;
+        // }
         apiquickRepliesHtml += `</div></li>`;
         return apiquickRepliesHtml;
     }
@@ -202,7 +203,7 @@ define(["utils", "settings"], function (utils, settings) {
         } else {
             qReply = data;
         }
-        console.log('LLL ',JSON.stringify(qReply));
+
         for (let i in qReply) {
             if (qReply[i].platform == "facebook" && qReply[i].type == "2") {
                 if (data.responseIndex) {
@@ -232,9 +233,9 @@ define(["utils", "settings"], function (utils, settings) {
             }
         }
         apiquickRepliesHtml += `</div>`;
-        if (data.bottomIcon) {
-            apiquickRepliesHtml += `<p class="bot-res-timestamp-qr"> ${data.time}</p>`;
-        }
+        // if (data.bottomIcon) {
+        //     apiquickRepliesHtml += `<p class="bot-res-timestamp-qr"> ${data.time}</p>`;
+        // }
         apiquickRepliesHtml += `</div></li>`;
         return apiquickRepliesHtml;
     }

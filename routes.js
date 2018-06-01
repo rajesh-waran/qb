@@ -34,18 +34,58 @@ router.post('/dialogflowAPI', function (req, res) {
 		if (error) {
 			res.json({ error: "error in chat server api call" }).end();
 		} else {
-			// if(body.result.metadata.intentName=='easyQuote'){
-			// 	body.result.contexts.forEach(function(context){
-			// 		if(context.name == 'easyquote-followup'){	
-			// 			conf = JSON.parse(JSON.stringify(config));						
-			// 			mail.sendMail(context.parameters.email, conf.mailContent, conf.mailAttachments);
-			// 		}
-			// 	});
-			// }
-			res.json(body).end();
+			
+			if(body.result && body.result.action && body.result.action=='discount.discount-custom'){
+
+				let resolvedQuery = body.result.resolvedQuery;
+				let count = resolvedQuery.split(',').length;
+
+				if(count <4){
+					body.result.fulfillment.messages[0].speech = body.result.fulfillment.messages[0].speech.replace('2  coverage', count+' coverage')
+					body.result.fulfillment.messages[2].speech = "<a>Click here</a> to refer the discount chart for more details"
+				} else {
+					body.result.fulfillment.messages[1].speech = "We already offering an exciting <b>20% discount</b> for a minimum of <b>4 coverage</b> sections";
+					body.result.fulfillment.messages.splice(0,1);
+					body.result.fulfillment.messages[1].speech = "<a>Click here</a> to refer the discount chart for more details"
+				}
+				res.json(body).end();
+			}
+			// } else if(body.result && body.result.action && body.result.action =="riskClass"){
+				
+			// 	let riskClass = body.result.parameters && body.result.parameters.RiskClass ? body.result.parameters.RiskClass : null;
+				
+			// 	if(riskClass){
+
+			// 		var options = {
+			// 			method: 'GET',
+			// 			url: "",
+			// 			headers: {
+			// 				"Authorization": "Bearer " + config.accessToken
+			// 			},
+			// 			body: {},
+			// 			json: true
+			// 		};
+			// 		request(options, function (error, response, body) {
+			// 			if (error) {
+			// 				console.log('ERROR In API CALL');
+			// 				res.json(body).end();
+			// 			} else {
+			// 				body.result.fulfillment.messages[0].speech = body.result.fulfillment.messages[0].speech.replace('Candy & Confectionery Products Manufacturing', count+' coverage');
+			// 				res.json(body).end();
+			// 			}
+			// 		});					
+			// 	} else {
+			// 		res.json(body).end();
+			// 	}
+			// } 
+			else{
+				res.json(body).end();
+			}
 		}
 	});
-})
+});
+
+
 router.post('/botHandler',/*Authentication.SetRealm('botHandler'), Authentication.BasicAuthentication, */function (req, res) {
 	//console.log('Dialogflow Request headers: ' + JSON.stringify(req.headers));
 	console.log('Dialogflow Request body: ' + JSON.stringify(req.body));

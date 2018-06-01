@@ -34,6 +34,7 @@ define(['jquery', 'settings', 'utils', 'messageTemplates', 'cards', 'uuid'],
 
 				this.options.query = userInput;
 				console.log(userInput);
+				console.log('OI ', JSON.stringify(this.options), config.chatServerURL);
 				$.ajax({
 					type: "POST",
 					url: config.chatServerURL,
