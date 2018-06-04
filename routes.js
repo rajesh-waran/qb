@@ -42,11 +42,11 @@ router.post('/dialogflowAPI', function (req, res) {
 
 				if(count <4){
 					body.result.fulfillment.messages[0].speech = body.result.fulfillment.messages[0].speech.replace('2  coverage', count+' coverage')
-					body.result.fulfillment.messages[2].speech = "<a>Click here</a> to refer the discount chart for more details"
+					body.result.fulfillment.messages[2].speech = '<a class="pdfClass" data-toggle="modal" data-target="#fundModal">Click here</a> to refer the discount chart for more details'
 				} else {
 					body.result.fulfillment.messages[1].speech = "We already offering an exciting <b>20% discount</b> for a minimum of <b>4 coverage</b> sections";
 					body.result.fulfillment.messages.splice(0,1);
-					body.result.fulfillment.messages[1].speech = "<a>Click here</a> to refer the discount chart for more details"
+					body.result.fulfillment.messages[1].speech = '<a class="pdfClass" data-toggle="modal" data-target="#fundModal">Click here</a> to refer the discount chart for more details'
 				}
 				res.json(body).end();
 			} else if(body.result && body.result.action && body.result.action == "selectDeductible" || body.result && body.result.action && body.result.action == "others"){

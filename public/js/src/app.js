@@ -90,6 +90,16 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 			}
 		});
 
+		$(document).on('click','.pdfClass', function(e){
+			
+			//alert($(parent.document).find("body div#fundModal").html());
+			//console.log('POL ', $(parent.document).find("div#fundModal"));
+			//$("#fundModal").modal('show');
+			$(parent.document).find("body div#fundModal").modal('show');
+			//$("a.pdfClass").hide();
+			//e.preventDefault();
+			
+		});
 		
 		//Quick Replies payload button Click
 		$(document).on('click', '.QuickreplybtnPayload', function (e) {
