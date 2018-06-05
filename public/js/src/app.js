@@ -167,24 +167,49 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 			e.preventDefault();
 		});
 
-		// $(document).on('click', '.apiMultipleQuickreplybtnPayload', function (e) {
-		// 	console.log('DOI  ', $(this).attr("checked"), $(this));
-		// 	var payloadInput = $(this).data().apimultiplequickrepliespayload;
-		// 	if ($(this).attr("checked")) {
-		// 		$('.apiMultipleQuickreplybtnPayload').find('input').addClass('checked');
-		// 	} else {
-		// 		$('.apiMultipleQuickreplybtnPayload').find('input').removeClass('checked');
-		// 	}
+		$(document).on('click', '.btn-test', function (e) {
+			
+			console.log('DOI  ', $(this).data());
+			$(this).removeClass('btn-test');
+			$(this).addClass('btn-testing');
+			var payloadInput = $(this).data().apimultiplequickrepliespayload;
+			if ($(this).attr("checked")) {
+				$('.apiMultipleQuickreplybtnPayload').find('input').addClass('checked');
+			} else {
+				$('.apiMultipleQuickreplybtnPayload').find('input').removeClass('checked');
+			}
 
-		// 	if (inputArr.indexOf(payloadInput) == -1) {
-		// 		inputArr.push(payloadInput);
-		// 	} else {
-		// 		inputArr.splice(inputArr.indexOf(payloadInput), 1);
-		// 	}
-		// 	console.log('OKOK ', inputArr);
-		// 	e.preventDefault();
-		// });
+			if (inputArr.indexOf(payloadInput) == -1) {
+				inputArr.push(payloadInput);
+			} else {
+				inputArr.splice(inputArr.indexOf(payloadInput), 1);
+			}
+			console.log('OKOK ', inputArr);
+			e.preventDefault();
+		});
 
+
+$(document).on('click', '.btn-testing', function (e) {
+			
+			console.log('DOI  ', $(this).data());
+			$(this).css('background-color','green');
+			$(this).removeClass('btn-testing');
+			$(this).addClass('btn-test');
+			var payloadInput = $(this).data().apimultiplequickrepliespayload;
+			if ($(this).attr("checked")) {
+				$('.apiMultipleQuickreplybtnPayload').find('input').addClass('checked');
+			} else {
+				$('.apiMultipleQuickreplybtnPayload').find('input').removeClass('checked');
+			}
+
+			if (inputArr.indexOf(payloadInput) == -1) {
+				inputArr.push(payloadInput);
+			} else {
+				inputArr.splice(inputArr.indexOf(payloadInput), 1);
+			}
+			console.log('OKOK ', inputArr);
+			e.preventDefault();
+		});
 		$(document).on('click', '.multiple-click', function (r) {
 
 			$('.apiMultipleQuickreplybtnPayload').hide();
