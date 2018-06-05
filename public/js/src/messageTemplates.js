@@ -169,8 +169,8 @@ define(["utils", "settings"], function (utils, settings) {
                 }
                 apiquickRepliesHtml += `<div class="quick-replies-buttons" style="align-items: center;justify-content: center;"  data-toggle="buttons">`
                 for (let j = 0; j < qReply[i].replies.length; j++) {
-                    apiquickRepliesHtml += `<label class="btn btn-test padding-10px active apiMultipleQuickreplybtnPayload" data-apiMultiplequickRepliesPayload="${qReply[i].replies[j]}">
-                    <input type="checkbox" name="options[]" checked="checked" > ${qReply[i].replies[j]}
+                    apiquickRepliesHtml += `<label class="btn btn-test padding-10px apiMultipleQuickreplybtnPayload" data-apiMultiplequickRepliesPayload="${qReply[i].replies[j]}">
+                    <input type="checkbox" name="riskname"> ${qReply[i].replies[j]}
                 </label>`;
                     //apiquickRepliesHtml += `<button type="button" class="btn btn-primary active apiMultipleQuickreplybtnPayload" data-apiMultiplequickRepliesPayload="${qReply[i].replies[j]}"><div class="quick-reply-button-text">${qReply[i].replies[j]}</button>`
                 }

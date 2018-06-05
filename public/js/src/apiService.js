@@ -85,7 +85,7 @@ define(['jquery', 'settings', 'utils', 'messageTemplates', 'cards', 'uuid'],
 						let buttons;
 
 						console.log(response);
-						if (response.status.code != 200) {
+						if (response.status && response.status.code != 200) {
 							let cardHTML = cards({
 								"payload": response.status.errorDetails,
 								"senderName": config.botTitle,

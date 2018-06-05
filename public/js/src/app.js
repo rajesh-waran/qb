@@ -89,18 +89,18 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 				$(".emoji-wysiwyg-editor").html('');
 			}
 		});
+		
+		$(document).on('click', '.pdfClass', function (e) {
 
-		$(document).on('click','.pdfClass', function(e){
-			
 			//alert($(parent.document).find("body div#fundModal").html());
 			//console.log('POL ', $(parent.document).find("div#fundModal"));
 			//$("#fundModal").modal('show');
 			$(parent.document).find("body div#fundModal").modal('show');
 			//$("a.pdfClass").hide();
 			//e.preventDefault();
-			
+
 		});
-		
+
 		//Quick Replies payload button Click
 		$(document).on('click', '.QuickreplybtnPayload', function (e) {
 			var payloadInput = $(this).data().quickrepliespayload;
@@ -167,17 +167,23 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 			e.preventDefault();
 		});
 
-		$(document).on('click', '.apiMultipleQuickreplybtnPayload', function (e) {
+		// $(document).on('click', '.apiMultipleQuickreplybtnPayload', function (e) {
+		// 	console.log('DOI  ', $(this).attr("checked"), $(this));
+		// 	var payloadInput = $(this).data().apimultiplequickrepliespayload;
+		// 	if ($(this).attr("checked")) {
+		// 		$('.apiMultipleQuickreplybtnPayload').find('input').addClass('checked');
+		// 	} else {
+		// 		$('.apiMultipleQuickreplybtnPayload').find('input').removeClass('checked');
+		// 	}
 
-			var payloadInput = $(this).data().apimultiplequickrepliespayload;
-			if (inputArr.indexOf(payloadInput) == -1) {
-				inputArr.push(payloadInput);
-			} else {
-				inputArr.splice(inputArr.indexOf(payloadInput), 1);
-			}
-			console.log('OKOK ', inputArr);
-			e.preventDefault();
-		});
+		// 	if (inputArr.indexOf(payloadInput) == -1) {
+		// 		inputArr.push(payloadInput);
+		// 	} else {
+		// 		inputArr.splice(inputArr.indexOf(payloadInput), 1);
+		// 	}
+		// 	console.log('OKOK ', inputArr);
+		// 	e.preventDefault();
+		// });
 
 		$(document).on('click', '.multiple-click', function (r) {
 
@@ -199,8 +205,8 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 			$('[data-toggle="popover"],[data-original-title]').each(function () {
 				//the 'is' for buttons that trigger popups
 				//the 'has' for icons within a button that triggers a popup
-				if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {                
-					(($(this).popover('hide').data('bs.popover')||{}).inState||{}).click = false  // fix for BS 3.3.6
+				if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+					(($(this).popover('hide').data('bs.popover') || {}).inState || {}).click = false  // fix for BS 3.3.6
 				}
 			});
 		});
