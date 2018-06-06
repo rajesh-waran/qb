@@ -97,8 +97,9 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 			//$("#fundModal").modal('show');
 			$(parent.document).find("body div#fundModal").modal('show');
 			//$("a.pdfClass").hide();
-			//e.preventDefault();
-
+			e.preventDefault();
+			return;
+			
 		});
 
 		//Quick Replies payload button Click
