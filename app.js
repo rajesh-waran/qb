@@ -7,7 +7,7 @@ var session = require('express-session');
 var port = process.env.PORT || 4500;
 app.use(session({ secret: 'this-is-a-secret-token',resave: true, saveUninitialized: true, cookie: { maxAge: 60000 }}));
 redirect(app);
-//global.recentInput = "";
+
 // Add headers
 app.use(function (req, res, next) {
 
@@ -29,8 +29,6 @@ app.use(function (req, res, next) {
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: false })) 
 app.use(bodyParser.json());
-app.set('views', __dirname + '/public/views');
-app.set('view engine', 'ejs');
 app.use(routes);
 
 var server = app.listen(port,function(){

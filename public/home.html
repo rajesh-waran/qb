@@ -59,18 +59,6 @@
         $('[data-toggle="popover"]').popover()
       });
 
-      $('#webChat').on('hide.bs.popover', function () {
-
-        $("#webChatPrimaryIcon").show();
-        $("#webChatCloseIcon").hide();
-
-      });
-
-      $('#webChat').on('show.bs.popover', function () {
-        $("#webChatPrimaryIcon").hide();
-        $("#webChatCloseIcon").show();
-      });
-
       $('#closeid').on('click', function () {
         alert('asddddddddd');
         $('div.modal-backdrop').remove();
@@ -122,9 +110,7 @@
         data-placement="top" data-content="<iframe  src='./chat.html?popup=1' height='510' width='400' style='border:none'></iframe>"
         data-html="true" href="javascript:void(0);">
         <span class="pmd-floating-hidden">Primary</span>
-        <i id="webChatPrimaryIcon" class="material-icons md-light pmd-sm">chat</i>
-        <img id="webChatPrimaryIcon" class="material-icons md-light pmd-sm" src="avatar/chatimg.png">
-        <i id="webChatCloseIcon" class="material-icons md-light pmd-sm" style="display: none">close</i>
+        <img src="avatar/chatimg.png" style="margin-top: 10px;margin-left: -10px">
       </a>
 
     </div>
