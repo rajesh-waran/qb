@@ -23,8 +23,6 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="/css/emoji.css" rel="stylesheet">
 
-
-
 </head>
 
 
@@ -32,8 +30,6 @@
 
   <script data-main="js/require-setup" src="require.js"></script>
   <script>
-
-
 
     function bindJS() {
       $('.chat-body').css('height', (window.innerHeight - 140) + 'px')
@@ -56,10 +52,10 @@
         $('#modal-btndownload').attr('href', $(e.relatedTarget).data('src'));
       });
 
-    $('#closeChat').click(function(e){
-        alert('YEAH 1');
-        $("#webChat").hide();
-		});
+      $('.pdfClass').on('click', function(){
+          console.log('asdasdasd');
+          $('.classModal').css('display','block')
+      });
 
       document.getElementById("btn-input").focus();
 

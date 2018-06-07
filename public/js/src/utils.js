@@ -22,7 +22,7 @@ define([], function () {
     };
 
     methods.scrollSmoothToBottom = (element) => {
-		console.log('element',element);
+		//console.log('element',element);
 		
         setTimeout(() => {
             var height = element[0].scrollHeight;

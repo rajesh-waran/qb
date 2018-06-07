@@ -57,9 +57,7 @@ img.emoji {
     cursor: pointer;
     position: absolute;
     right: 50px;
-    top: 15px;
-    /* right: 10px;
-    top: 5px; */
+    top: 22px;
     font-size: 20px;
     opacity: 0.7;
     z-index: 100;
@@ -92,12 +90,12 @@ img.emoji {
 }
 
 .emoji-wysiwyg-editor {
-    padding: 6px;
+    padding: 4px;
     margin-top: 11px;
     padding-right: 0px !important;
     margin-bottom: 0px;
     min-height: 35px; /* 35 */
-    height: 30px !important;
+    height: 50px !important;
     max-height: 284px;
     overflow-y: auto;
     max-width: 270px;

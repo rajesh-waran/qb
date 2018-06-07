@@ -106,8 +106,8 @@ define(['jquery', 'settings', 'utils', 'messageTemplates', 'cards', 'uuid'],
 									if (i == response.result.fulfillment.messages.length - 1) {
 										bottomFlag = true;
 									}
-									console.log('length', i, bottomFlag);
-									console.log('resIndex', resIndex);
+								//	console.log('length', i, bottomFlag);
+							//		console.log('resIndex', resIndex);
 									if (response.result.fulfillment.messages[i].type == 0) {
 										let cardHTML = cards({
 											"payload": response.result.fulfillment.messages[i].speech,

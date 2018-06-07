@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta name="description" content="QuoteBuy" />
+
+	<title>Quote & Buy</title>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="style/bootstrap.min.css" rel="stylesheet" />
+	<link href="style/propeller.min.css" rel="stylesheet" />
+	<!--[if lte IE 9]>
+    <link href="./style/pru-com-main-split.min.css" rel="stylesheet"/>
+ <![endif]-->
+	<!--[if lt IE 9]>
+<script src="js/lib/respond.min.js"></script>
+<![endif]-->
+	<style type="text/css">
+		.chatIcon {
+			padding-left: 15px !important;
+			padding-right: 15px !important;
+		}
+
+		.popover {
+			max-width: 1200px;
+			padding: 0% !important;
+			border-radius: 0px;
+		}
+
+		.style-3::-webkit-scrollbar-track {
+			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+			background-color: #F5F5F5;
+		}
+
+		.style-3::-webkit-scrollbar {
+			width: 6px;
+			background-color: #F5F5F5;
+		}
+
+		.style-3::-webkit-scrollbar-thumb {
+			background-color: #000000;
+		}
+
+		.popover-content {
+			padding: 0px;
+		}
+
+		.modal-content {
+			padding: 0px;
+		}
+
+		.table.fund-switch-cllss>tbody>tr>td,
+		.table>tbody>tr>th,
+		.table>tfoot>tr>td,
+		.table>tfoot>tr>th,
+		.table>thead>tr>td,
+		.table>thead>tr>th {
+			padding: 7px
+		}
+
+		iframe#_hjRemoteVarsFrame {
+			display: none !important;
+			width: 1px !important;
+			height: 1px !important;
+			opacity: 0 !important;
+			pointer-events: none !important;
+		}
+	</style>
+	<script src="js/lib/jquery.min.js"></script>
+
+	<script src="js/lib/bootstrap.min.js"></script>
+
+	<script>
+		$(function () {
+			$('[data-toggle="popover"]').popover()
+		})
+	</script>
+
+</head>
+
+<body>
+
+	<div id="fundModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Fund Details</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="col-md-12 fund-details">
+						<object type="application/pdf" data="ChatBot.pdf" width="100%" height="500" style="height: 85vh;">No Support</object>
+					</div>
+				</div>
+				<div class="modal-footer">
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!--<a href="#" onclick="window.open('https://chatbotasistant.herokuapp.com/?popup=1','chat70994705','width=400,height=650,resizable=yes');return false;">Click to chat</a>-->
+	<footer>
+		<div class="menu pmd-floating-action" role="navigation">
+			<a class="btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect  btn-primary" id="webChat" data-trigger="click" data-toggle="popover"
+			 data-placement="top" data-content="<iframe  src='./chat.html' height='530' width='400' style='border:none'></iframe>"
+			 data-html="true" href="javascript:void(0);">
+				<span class="pmd-floating-hidden">Primary</span>
+				<img src="avatar/chatimg.png" style="margin-top: 10px;margin-left: -10px">
+			</a>
+		</div>
+	</footer>
+</body>
+
+</html>

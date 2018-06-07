@@ -219,7 +219,6 @@ define(["utils", "settings"], function (utils, settings) {
 
                 }
                 apiquickRepliesHtml += `<div class="quick-replies-buttons" style="align-items: center;justify-content: center;">`
-                console.log('FEDERER ', qReply[i].replies.indexOf("Risk Class"), qReply[i].replies);
 
                 if (qReply[i].replies.indexOf("Risk Class") != -1) {
                     for (let j = 0; j < qReply[i].replies.length; j++) {

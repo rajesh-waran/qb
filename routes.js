@@ -7,7 +7,7 @@ var path = require("path");
 var config = require("./config");
 
 router.get('/', function (req, res) {
-	res.redirect("/home.html");
+	res.redirect("/index.html");
 });
 
 router.get('/chat', function (req, res) {
@@ -54,11 +54,10 @@ router.post('/dialogflowAPI', function (req, res) {
 				if(riskClass){
 
 					var options = {
-						method: 'GET',
-						url: "http://10.76.1.53:7999/aa/industry?industryCode="+ riskClass,
-						headers: {
-						},
-						body: {},
+						method: 'POST',
+						url: "http://10.76.1.53:7999/aa/industry",
+						headers: {},
+						body: {"code": riskClass},
 						json: true
 					};
 					request(options, function (error, response, responseBody) {

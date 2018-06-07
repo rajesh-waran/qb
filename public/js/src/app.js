@@ -61,7 +61,7 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 		// });
 
 		var msg_container = $("ul#msg_container");
-		console.log('OOOO ', msg_container);
+
 		if (msg_container.find('li').length == 0) {
 			msg_container.siblings("h1").removeClass('hidden');
 		} else {
@@ -89,17 +89,11 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 				$(".emoji-wysiwyg-editor").html('');
 			}
 		});
-		
-		$(document).on('click', '.pdfClass', function (e) {
 
-			//alert($(parent.document).find("body div#fundModal").html());
-			//console.log('POL ', $(parent.document).find("div#fundModal"));
-			//$("#fundModal").modal('show');
+		$(document).on('click', '.pdfClass', function (e) {
 			$(parent.document).find("body div#fundModal").modal('show');
-			//$("a.pdfClass").hide();
 			e.preventDefault();
 			return;
-			
 		});
 
 		//Quick Replies payload button Click
@@ -169,8 +163,7 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 		});
 
 		$(document).on('click', '.btn-test', function (e) {
-			
-			console.log('DOI  ', $(this).data());
+
 			$(this).removeClass('btn-test');
 			$(this).addClass('btn-testing');
 			var payloadInput = $(this).data().apimultiplequickrepliespayload;
@@ -185,15 +178,12 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 			} else {
 				inputArr.splice(inputArr.indexOf(payloadInput), 1);
 			}
-			console.log('OKOK ', inputArr);
 			e.preventDefault();
 		});
 
+		$(document).on('click', '.btn-testing', function (e) {
 
-$(document).on('click', '.btn-testing', function (e) {
-			
-			console.log('DOI  ', $(this).data());
-			$(this).css('background-color','green');
+			$(this).css('background-color', 'green');
 			$(this).removeClass('btn-testing');
 			$(this).addClass('btn-test');
 			var payloadInput = $(this).data().apimultiplequickrepliespayload;
