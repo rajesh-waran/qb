@@ -166,6 +166,7 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 
 			$(this).removeClass('btn-test');
 			$(this).addClass('btn-testing');
+			
 			var payloadInput = $(this).data().apimultiplequickrepliespayload;
 			if ($(this).attr("checked")) {
 				$('.apiMultipleQuickreplybtnPayload').find('input').addClass('checked');
@@ -175,17 +176,24 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 
 			if (inputArr.indexOf(payloadInput) == -1) {
 				inputArr.push(payloadInput);
+				if(inputArr.length == 1){
+					$('.multiple-click').removeClass('disabled');
+				}
 			} else {
 				inputArr.splice(inputArr.indexOf(payloadInput), 1);
+				if(inputArr.length == 0){
+					$('.multiple-click').addClass('disabled');
+				}
 			}
+
 			e.preventDefault();
 		});
 
 		$(document).on('click', '.btn-testing', function (e) {
-
 			$(this).css('background-color', 'green');
 			$(this).removeClass('btn-testing');
 			$(this).addClass('btn-test');
+			
 			var payloadInput = $(this).data().apimultiplequickrepliespayload;
 			if ($(this).attr("checked")) {
 				$('.apiMultipleQuickreplybtnPayload').find('input').addClass('checked');
@@ -195,9 +203,16 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 
 			if (inputArr.indexOf(payloadInput) == -1) {
 				inputArr.push(payloadInput);
+				if(inputArr.length == 1){
+					$('.multiple-click').removeClass('disabled');
+				}
 			} else {
 				inputArr.splice(inputArr.indexOf(payloadInput), 1);
+				if(inputArr.length == 0){
+					$('.multiple-click').addClass('disabled');
+				}
 			}
+			
 			console.log('OKOK ', inputArr);
 			e.preventDefault();
 		});
