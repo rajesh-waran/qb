@@ -1,37 +1,28 @@
 {
-  "name": "eflight",
+  "name": "Quote-Buy",
   "version": "1.0.0",
-  "description": "Information & Booking flight services",
-  "main": "index.js",
+  "description": "Quote & Buy Macy",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "stop": "forever stop app.js",
+    "stop": "node stop app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/39781/EFlight.git"
+    "url": "git+https://github.com/rajeshwaranp-hexaware/qb.git"
   },
-  "keywords": [
-    "Eflight"
-  ],
-  "author": "Hari",
+  "keywords": [],
+  "author": "Rajeshwaran",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/39781/EFlight/issues"
+    "url": "https://github.com/rajeshwaranp-hexaware/qb/issues"
   },
-  "homepage": "https://github.com/39781/EFlight#readme",
   "dependencies": {
-    "actions-on-google": "^1.7.0",
-    "basic-auth": "^2.0.0",
     "body-parser": "^1.18.2",
-    "ejs": "^2.5.8",
     "express": "^4.16.2",
     "express-redirect": "^1.2.2",
     "express-session": "^1.15.6",
-    "forever": "^0.15.3",
-    "nodemailer": "^4.6.4",
-    "request": "^2.83.0",
-    "sendotp": "^1.2.8"
+    "request": "^2.83.0"
   }
 }

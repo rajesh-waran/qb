@@ -267,26 +267,27 @@ float:left;
 .scrollbar-style::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	background-color: #343434;
+	/* background-color: #343434; */
 	border-radius: 1px;
 }
 
 .scrollbar-style::-webkit-scrollbar
 {
 	width: 6px;
-	background-color: #343434;
+	/* background-color: #343434; */
 }
 
 .scrollbar-style::-webkit-scrollbar-thumb
 {
-	border-radius: 10px;
-	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, rgb(115, 47, 47)), color-stop(0.72, rgb(224, 120, 120)), color-stop(0.86, rgb(235, 38, 67)));
+  border-radius: 10px;
+  background-color: #888;
+	/* background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, rgb(115, 47, 47)), color-stop(0.72, rgb(224, 120, 120)), color-stop(0.86, rgb(235, 38, 67))); */
 }    
 
 .carouselScrollbar::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	background-color: #343434;
+	/* background-color: #343434; */
 	border-radius: 1px;
 	
 }
@@ -294,16 +295,71 @@ float:left;
 .carouselScrollbar::-webkit-scrollbar
 {
 	width: 3px;
-	background-color: #343434;
+	/* background-color: #343434; */
 }
 
 .carouselScrollbar::-webkit-scrollbar-thumb
 {
 	border-radius: 10px;
-	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, rgb(115, 47, 47)), color-stop(0.72, rgb(224, 120, 120)), color-stop(0.86, rgb(235, 38, 67)));
+	/* background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, rgb(115, 47, 47)), color-stop(0.72, rgb(224, 120, 120)), color-stop(0.86, rgb(235, 38, 67))); */
 } 
 
 .padding-left2px 
 {
   padding-left: 2px !important; 
 }
+
+.send-button {
+  background-color: #fff !important;
+  box-shadow: none !important;
+  margin-top: 16px !important;
+  margin-left: 5px;
+}
+
+.padding-10px {
+  padding: 10px;
+}
+
+/*.btn-test.active, .btn-test:active, .dropdown-toggle.btn-test.active, .dropdown-toggle.btn-test:active {
+  background-color : black !important;
+  padding: 15px !important;
+  border : solid 1px #03a9f4 !important;
+  color : #4d4c4c !important;
+  text-transform: none !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.21), 0 6px 20px 0 rgba(0, 0, 0, 0)
+}*/
+
+.btn-test:hover, .dropdown-toggle.btn-test:hover {
+  background-color : #0088ff !important;
+  padding: 15px !important;
+  color : #fff !important;
+  text-transform: none !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.21), 0 6px 20px 0 rgba(0, 0, 0, 0)
+}
+
+.btn-testing, .dropdown-toggle.btn-testing {
+   background-color : #03a9f4 !important;
+  padding: 15px !important;
+  color : #fff !important;
+  text-transform: none !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.21), 0 6px 20px 0 rgba(0, 0, 0, 0)
+}
+
+.btn-test, .dropdown-toggle.btn-test {
+  background-color : #fff !important;
+  padding: 15px !important;
+  color : #4d4c4c !important;
+  text-transform: none !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.21), 0 6px 20px 0 rgba(0, 0, 0, 0)
+}
+
+/*
+.btn-test-checkbox:active, .btn-test-checkbox:checked:active .btn-test-checkbox:checked:after{
+  background-color : #fff !important;
+  padding: 15px !important;
+  border : solid 1spx #03a9f4 !important;
+  color : #4d4c4c ;
+  font-color : #4d4c4c;
+  text-transform: none !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.21), 0 6px 20px 0 rgba(0, 0, 0, 0)
+}*/

@@ -28,11 +28,12 @@ define(["utils", "settings"], function (utils, settings) {
             <div class="media-left pull-right animated fadeInRight">
 
             <div class="media-body user-txt-space">
-				<img style="border-radius:50%;border:2px solid white;float: right;margin-right: 10px;" width="40" height="40" src='${settings.userAvatar}'/>
-                <p class="list-group-item-text-user">${data.payload}</p>`;
-        if (data.bottomIcon) {
-            html += `<p class="user-timestamp"><small> ${data.time}</small></p>`;
-        }
+            <img style="border-radius:50%;border:2px solid white;float: right;margin-right: 10px;" width="32" height="32" src='${settings.userAvatar}'/>
+            <p class="list-group-item-text-user">${data.payload} <span class="bot-res-timestamp abs">${data.time}</span></p>`;
+
+        // if (data.bottomIcon) {
+        //     html += `<p class="user-timestamp"> ${data.time}</p>`;
+        // }
         html += `</div></li>`;
 
         return html;
@@ -41,22 +42,21 @@ define(["utils", "settings"], function (utils, settings) {
     //Plain Text Template
     methods.plaintext = (data) => {
         let html = `<li class="list-group-item background-color-custom">
-
-            <div class="media-body bot-txt-space animated fadeInLeft">`
+       
+        <div class="media-body bot-txt-space animated fadeInLeft">`
         //if (data.responseIndex) {
-            html += `<img style="border-radius:50%;border:2px solid white;float: left;margin-right: 10px;" width="40" height="40" src='${settings.botAvatar}'/><p class="list-group-item-text-bot beforeAfter">${data.payload}</p>`;
+        html += `<img style="border-radius:50%;border:2px solid white;float: left;margin-right: 10px;" width="32" height="32" src='${settings.botAvatar}'/>
+        <p class="list-group-item-text-bot beforeAfter">${data.payload} <span class="bot-res-timestamp abs receiver"> ${data.time}</span></p>`;
         // } else {
-        //     html += `<img style="border-radius:50%;float: left;margin-right: 10px;" width="40" height="40" src='avatar/blank.ico'/><p class="list-group-item-text-bot">` + methods.bullets(data.payload) + `</p>`;
+        // html += `<img style="border-radius:50%;float: left;margin-right: 10px;" width="40" height="40" src='avatar/blank.ico'/><p class="list-group-item-text-bot">` + methods.bullets(data.payload) + `</p>`;
         // }
-
-        if (data.bottomIcon) {
-            html += `<p class="bot-res-timestamp"><small> ${data.time}</small></p>`;
-        }
+       
+        // if (data.bottomIcon) {
+        // html += `<p class="bot-res-timestamp"> ${data.time}</p>`;
+        // }
         html += `</div>
-
-
         </li>`;
-
+       
         return html;
     }
 
@@ -100,7 +100,7 @@ define(["utils", "settings"], function (utils, settings) {
             }
             html = cardBody + cardButtons + `</div></div>`;
             if (data.bottomIcon) {
-                html += `<p class="bot-res-timestamp-card"><small>${data.time}</small></p>`
+                html += `<p class="bot-res-timestamp-card">${data.time}</p>`
             }
             html += `</div></li>`;
         }
@@ -129,7 +129,7 @@ define(["utils", "settings"], function (utils, settings) {
                         }
                         else if (data.payload[i].payload.facebook.quick_replies[j].hasOwnProperty('tab')) {
                             console.log("TAB : " + data.payload[i].payload.facebook.quick_replies[j].tab);
-                            quickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-info QuickreplybtnPayload" onClick="window.open('${data.payload[i].payload.facebook.quick_replies[j].tab}','_blank'); " >${data.payload[i].payload.facebook.quick_replies[j].title}</button>`
+                            quickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-info QuickreplybtnPayload" onClick="window.open('${data.payload[i].payload.facebook.quick_replies[j].tab}','_blank'); " > ${data.payload[i].payload.facebook.quick_replies[j].title}</button>`
                         }
                     }
                 }
@@ -137,12 +137,56 @@ define(["utils", "settings"], function (utils, settings) {
         }
         quickRepliesHtml += `</div>`;
         if (data.bottomIcon) {
-            quickRepliesHtml += `<p class="bot-res-timestamp-qr"><small> <img style="border-radius:50%;border:2px solid white;" width="20" height="20" src='${settings.botAvatar}'/>${data.time}</small></p>`;
+            quickRepliesHtml += `<p class="bot-res-timestamp-qr"> <img style="border-radius:50%;border:2px solid white;" width="32" height="32" src='${settings.botAvatar}'/>${data.time}</p>`;
         }
         quickRepliesHtml += `</div></li>`
         return quickRepliesHtml;
     }
+
+    methods.multiplequickreplyfromapiai = (data) => {
+        var apiquickRepliesHtml = `<li class="list-group-item background-color-custom">
+
+        <div class="media-body animated fadeInLeft">`
+        let qReply;
+        if (data.payload) {
+            qReply = data.payload;
+        } else {
+            qReply = data;
+        }
+        for (let i in qReply) {
+            if (qReply[i].platform == "facebook" && qReply[i].type == "2") {
+                if (data.responseIndex) {
+                    apiquickRepliesHtml += `<img style="border-radius:50%;border:2px solid white;float: left;margin-right: 10px;" width="32" height="32" src='${settings.botAvatar}'/>`
+                    if (qReply[i].title.trim().length) {
+                        apiquickRepliesHtml += `<p class="list-group-item-quick-reply-space beforeAfter">${qReply[i].title}</p>`
+                    }
+                } else {
+                    //apiquickRepliesHtml+=	`<img style="border-radius:50%;float: left;margin-right: 10px;" width="40" height="40" src='avatar/blank.ico'/>`
+                    if (qReply[i].title.trim().length) {
+                        apiquickRepliesHtml += `<img style="border-radius:50%;float: left;margin-right: 10px;" width="40" height="40" src='avatar/blank.ico'/><p class="list-group-item-quick-reply-space">${qReply[i].title}</p>`
+                    }
+
+                }
+                apiquickRepliesHtml += `<div class="quick-replies-buttons" style="align-items: center;justify-content: center;"  data-toggle="buttons">`
+                for (let j = 0; j < qReply[i].replies.length; j++) {
+                    apiquickRepliesHtml += `<label class="btn btn-test padding-10px apiMultipleQuickreplybtnPayload" data-apiMultiplequickRepliesPayload="${qReply[i].replies[j]}">
+                    <input type="checkbox" name="riskname"> ${qReply[i].replies[j]}
+                </label>`;
+                    //apiquickRepliesHtml += `<button type="button" class="btn btn-primary active apiMultipleQuickreplybtnPayload" data-apiMultiplequickRepliesPayload="${qReply[i].replies[j]}"><div class="quick-reply-button-text">${qReply[i].replies[j]}</button>`
+                }
+                apiquickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-success .pmd-btn-fab multiple-click"><div class="quick-reply-button-text">Choose</button>`
+            }
+        }
+        apiquickRepliesHtml += `</div>`;
+        // if (data.bottomIcon) {
+        //     apiquickRepliesHtml += `<p class="bot-res-timestamp-qr"> ${data.time}</p>`;
+        // }
+        apiquickRepliesHtml += `</div></li>`;
+        return apiquickRepliesHtml;
+    }
+
     methods.quickrepliesfromapiai = (data) => {
+        
         var apiquickRepliesHtml = `<li class="list-group-item background-color-custom">
 
         <div class="media-body animated fadeInLeft">`
@@ -159,10 +203,11 @@ define(["utils", "settings"], function (utils, settings) {
         } else {
             qReply = data;
         }
+
         for (let i in qReply) {
             if (qReply[i].platform == "facebook" && qReply[i].type == "2") {
                 if (data.responseIndex) {
-                    apiquickRepliesHtml += `<img style="border-radius:50%;border:2px solid white;float: left;margin-right: 10px;" width="40" height="40" src='${settings.botAvatar}'/>`
+                    apiquickRepliesHtml += `<img style="border-radius:50%;border:2px solid white;float: left;margin-right: 10px;" width="32" height="32" src='${settings.botAvatar}'/>`
                     if (qReply[i].title.trim().length) {
                         apiquickRepliesHtml += `<p class="list-group-item-quick-reply-space beforeAfter">${qReply[i].title}</p>`
                     }
@@ -174,22 +219,29 @@ define(["utils", "settings"], function (utils, settings) {
 
                 }
                 apiquickRepliesHtml += `<div class="quick-replies-buttons" style="align-items: center;justify-content: center;">`
-                for (let j = 0; j < qReply[i].replies.length; j++) {
-                    apiquickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-info .pmd-btn-fab apiQuickreplybtnPayload" data-apiquickRepliesPayload="${qReply[i].replies[j]}">${qReply[i].replies[j]}</button>`
+
+                if (qReply[i].replies.indexOf("Risk Class") != -1) {
+                    for (let j = 0; j < qReply[i].replies.length; j++) {
+                            apiquickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-info .pmd-btn-fab apiQuickreplybtnPayload" data-apiquickRepliesPayload="${qReply[i].replies[j]}"><img src="./images/queryTypes/${qReply[i].replies[j].replace(/ /g, '')}.svg" class="img-responsive quick-reply-icon"> <div class="quick-reply-button-text">${qReply[i].replies[j]}</div></button>`
+                    }
+                } else {
+                    for (let j = 0; j < qReply[i].replies.length; j++) {
+                            apiquickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-info .pmd-btn-fab apiQuickreplybtnPayload" data-apiquickRepliesPayload="${qReply[i].replies[j]}">${qReply[i].replies[j]}</button>`
+                    }
                 }
             }
         }
         apiquickRepliesHtml += `</div>`;
-        if (data.bottomIcon) {
-            apiquickRepliesHtml += `<p class="bot-res-timestamp-qr"><small> ${data.time}</small></p>`;
-        }
+        // if (data.bottomIcon) {
+        //     apiquickRepliesHtml += `<p class="bot-res-timestamp-qr"> ${data.time}</p>`;
+        // }
         apiquickRepliesHtml += `</div></li>`;
         return apiquickRepliesHtml;
     }
     methods.carousel = (data, uniqueId) => {
         var carousel = `<li class="list-group-item background-color-custom animated fadeInLeft">`
         if (data.responseIndex) {
-            carousel += `<img style="border-radius:50%;border:2px solid white;float: left;margin-right: 10px;" width="40" height="40" src='${settings.botAvatar}'/><div id="${uniqueId}" class="beforeAfter carousel slide pmd-card pmd-card-default pmd-z-depth carousel-custom" data-ride="false">`
+            carousel += `<img style="border-radius:50%;border:2px solid white;float: left;margin-right: 10px;" width="32" height="32" src='${settings.botAvatar}'/><div id="${uniqueId}" class="beforeAfter carousel slide pmd-card pmd-card-default pmd-z-depth carousel-custom" data-ride="false">`
         } else {
             carousel += `<img style="border-radius:50%;float: left;margin-right: 10px;" width="40" height="40" src='avatar/blank.ico'/><div id="${uniqueId}" class="carousel slide pmd-card pmd-card-default pmd-z-depth carousel-custom" data-ride="false">`
         }
@@ -211,12 +263,12 @@ define(["utils", "settings"], function (utils, settings) {
                                 <img data-target="#center-dialog" data-toggle="modal" class="img-circle" src="${data.payload[i].imageUrl}" data-src="${data.payload[i].imageUrl}" alt="Image" style="max-width:100%;">
                             </a><div class="commonHeight"><h3 class="carousel-body" style="margin-top:4px !important"><p class="carousel-title">`+ methods.bullets(data.payload[i].title) + `</p>`
                     } else {
-                        carousel += `<div class="commonHeight" style="border-radius:15px;"><h3 class="carousel-body" style="border-radius:15px;margin-top:4px !important"><p class="carousel-title">` + methods.bullets(data.payload[i].title) + `</p>`                        
+                        carousel += `<div class="commonHeight" style="border-radius:15px;"><h3 class="carousel-body" style="border-radius:15px;margin-top:4px !important"><p class="carousel-title">` + methods.bullets(data.payload[i].title) + `</p>`
                     }
-                    if(data.payload[i].subtitle){
-                        carousel += `<p class="carousel-subtitle carouselScrollbar">`+ methods.bullets(data.payload[i].subtitle) + `</p></div>`
-                    } else{
-                        carousel+= `</div>`
+                    if (data.payload[i].subtitle) {
+                        carousel += `<p class="carousel-subtitle carouselScrollbar">` + methods.bullets(data.payload[i].subtitle) + `</p></div>`
+                    } else {
+                        carousel += `</div>`
                     }
                     if (data.buttons && data.payload[i].type == 1) {
                         for (var j = 0; j < data.payload[i].buttons.length; j++) {
@@ -240,8 +292,8 @@ define(["utils", "settings"], function (utils, settings) {
                         carousel += `<div class="commonHeight" style="border-radius:15px;"><h3 class="carousel-body" style="border-radius:15px;margin-top:4px !important"> <p class="carousel-title">` + methods.bullets(data.payload[i].title) + `</p>`
                     }
 
-                    if(data.payload[i].subtitle){
-                        carousel += `<p class="carousel-subtitle carouselScrollbar">`+ methods.bullets(data.payload[i].subtitle) + `</p>`;
+                    if (data.payload[i].subtitle) {
+                        carousel += `<p class="carousel-subtitle carouselScrollbar">` + methods.bullets(data.payload[i].subtitle) + `</p>`;
                     }
 
                     if (data.buttons && data.payload[i].type == 1) {
@@ -265,7 +317,7 @@ define(["utils", "settings"], function (utils, settings) {
         <span class="sr-only">Next</span></a>
 	  </div><!--.Carousel--></div>`;
         if (data.bottomIcon) {
-            carousel += `<p style="bottom: 10px;" class="bot-res-timestamp-card"><small> ${data.time}</small></p>`;
+            carousel += `<p style="bottom: 10px;" class="bot-res-timestamp-card"> ${data.time}</p>`;
         }
         carousel += `</div></li>`;
 
@@ -301,7 +353,7 @@ define(["utils", "settings"], function (utils, settings) {
             }
             html += `</ul>`;
             if (data.bottomIcon) {
-                html += `<p class="bot-res-timestamp-qr"><small> <img style="border-radius:50%;border:2px solid white;" width="20" height="20" src='${settings.botAvatar}'/>${data.time}</small></p>`;
+                html += `<p class="bot-res-timestamp-qr"><img style="border-radius:50%;border:2px solid white;" width="32" height="32" src='${settings.botAvatar}'/>${data.time}</p>`;
             }
             html += `</li>`;
         }
@@ -334,13 +386,12 @@ define(["utils", "settings"], function (utils, settings) {
                 else {
                     cardButtons += `<button type="button"  class="btn btn-primary infocard-btn-custom webview"  onClick="window.open('https://fast-reef-26757.herokuapp.com/${data.payload.buttons[j].url}','chat70994705','width=400,height=600,resizable=yes');$('.webview').hide();return false;" >${data.payload.buttons[j].title}</button>`
                 }
-
             }
             cardButtons += `</div>`
         }
         html = cardBody + cardButtons + `</div></div>`;
         if (data.bottomIcon) {
-            html += `<p class="bot-res-timestamp-card"><small> <img style="border-radius:50%;border:2px solid white;" width="20" height="20" src='${settings.botAvatar}'/>${data.time}</small></p>`;
+            html += `<p class="bot-res-timestamp-card"> <img style="border-radius:50%;border:2px solid white;" width="32" height="32" src='${settings.botAvatar}'/>${data.time}</p>`;
         }
         html += `</div></li>`;
 

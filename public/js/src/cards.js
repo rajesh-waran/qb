@@ -40,6 +40,10 @@ define(['messageTemplates', 'uuid'], function(messageTpl, uuidv1){
 			if (this.responseType == "quickreplyfromapiai") {
 				console.log(this.data);
 				return messageTpl.quickrepliesfromapiai(this.data);
+            }
+            if (this.responseType == "multiplequickreplyfromapiai") {
+				console.log(this.data);
+				return messageTpl.multiplequickreplyfromapiai(this.data);
 			}
             if(this.responseType == "quickreplies"){
 				console.log(this.data);

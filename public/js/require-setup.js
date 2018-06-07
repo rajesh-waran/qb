@@ -37,9 +37,6 @@ requirejs.config({
         apiService : 'src/apiService',
         messageTemplates : 'src/messageTemplates',
         cards : 'src/cards'
-        
-       
     }
-    
 });
 
