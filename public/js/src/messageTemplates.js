@@ -174,7 +174,7 @@ define(["utils", "settings"], function (utils, settings) {
                 </label>`;
                     //apiquickRepliesHtml += `<button type="button" class="btn btn-primary active apiMultipleQuickreplybtnPayload" data-apiMultiplequickRepliesPayload="${qReply[i].replies[j]}"><div class="quick-reply-button-text">${qReply[i].replies[j]}</button>`
                 }
-                apiquickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-success .pmd-btn-fab multiple-click"><div class="quick-reply-button-text">Choose</button>`
+                apiquickRepliesHtml += `<button type="button" id= "multiBt"  class="btn pmd-btn-outline pmd-ripple-effect btn-success .pmd-btn-fab multiple-click disabled"><div class="quick-reply-button-text">Choose</button>`
             }
         }
         apiquickRepliesHtml += `</div>`;
