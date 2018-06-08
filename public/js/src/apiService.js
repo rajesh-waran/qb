@@ -30,7 +30,7 @@ define(['jquery', 'settings', 'utils', 'messageTemplates', 'cards', 'uuid'],
 				}));
 			}
 			askBot(userInput, callback) {
-				if(userInput && userInput == ''){
+				if(userInput && userInput != ''){
 					this.userSays(userInput, callback);
 
 					this.options.query = userInput;
