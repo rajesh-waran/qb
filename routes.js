@@ -43,10 +43,6 @@ router.post('/dialogflowAPI', function (req, res) {
 					body.result.fulfillment.messages[1].speech = '<a class="pdfClass" data-toggle="modal" data-target="#fundModal">Click here</a> to refer the discount chart for more details'
 				}
 				res.json(body).end();
-			} else if(body.result && body.result.action && body.result.action == "selectDeductible" || body.result && body.result.action && body.result.action == "others"){
-				body.result.fulfillment.messages[0].speech = body.result.fulfillment.messages[0].speech.replace('Click here', '<a>Click here</a>')
-				res.json(body).end();
-			
 			} else if(body.result && body.result.action && body.result.action =="riskClass"){
 				
 				let riskClass = body.result.parameters && body.result.parameters.RiskClass ? body.result.parameters.RiskClass : null;

@@ -52,9 +52,8 @@
         $('#modal-btndownload').attr('href', $(e.relatedTarget).data('src'));
       });
 
-      $('.pdfClass').on('click', function(){
-          console.log('asdasdasd');
-          $('.classModal').css('display','block')
+      $('.pdfClass').on('click', function () {
+        $('.classModal').css('display', 'block')
       });
 
       document.getElementById("btn-input").focus();
@@ -68,15 +67,22 @@
         }
       });
 
+      $(document).on("click", ".close", function () {
+        console.log('YO ', $(parent.document).find("body footer div a#webChat"));
+        //console.log('PPPPP ', $(parent.document).find("body footer div a#webChat"));
+        $(parent.document).find("body footer div a#webChat").popover('hide');
+      });
     }
 
 
     require(['lib/jquery.min'], function () {
+      require(['lib/bootstrap.min'], function () {
         require(['lib/propeller'], function () {
           require(['src/app'], function () {
             bindJS()
           });
         });
+      });
     });
 
   </script>
@@ -88,7 +94,7 @@
         <p id="u6font">Macy</p>
       </div>
       <div class="col-xs-6">
-        <img src="./images/close.svg" id="#closeChat" class="img-responsive close-icon-close">
+        <img src="./images/close.svg" id="#closeChat" class="img-responsive close-icon-close close">
         <!-- <img src="./images/Expand.svg" class="img-responsive close-icon-expand"> -->
         <!-- style="padding-top: 10%; max-width: 75px;" -->
       </div>
