@@ -68,9 +68,15 @@
       });
 
       $(document).on("click", ".close", function () {
-        console.log('YO ', $(parent.document).find("body footer div a#webChat"));
+        console.log('YO ', $(parent.document).find("body footer div a#webChat iframe"));
         //console.log('PPPPP ', $(parent.document).find("body footer div a#webChat"));
-        $(parent.document).find("body footer div a#webChat").popover('hide');
+        $("parent.document html body footer div a#webChat iframe").popover('hide');
+      });
+
+      $(document).on("click", ".close-icon-expand", function () {
+        console.log('EXPAND ', $("parent.document html body footer div a#webChat iframe").css());
+        $("parent.document html body footer div a#webChat iframe").css({"height" : "600 !important", "width" : "700 !important"});
+        
       });
     }
 
@@ -95,7 +101,7 @@
       </div>
       <div class="col-xs-6">
         <img src="./images/close.svg" id="#closeChat" class="img-responsive close-icon-close close">
-        <!-- <img src="./images/Expand.svg" class="img-responsive close-icon-expand"> -->
+        <img src="./images/Expand.svg" class="img-responsive close-icon-expand">
         <!-- style="padding-top: 10%; max-width: 75px;" -->
       </div>
     </div>
