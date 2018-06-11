@@ -23,7 +23,7 @@ html,body{
 }
 
 .chat-body {
-    height: 382px;
+    height: 382px !important;
     overflow-y: auto;
     background-color: #ebeded;
     display: block;
@@ -32,7 +32,7 @@ html,body{
 }
 
 .chat-welcome-message {
-  padding-top: 33%;
+  padding-top: 10%;
 }
 
 .pmd-list .list-group-item {
@@ -384,8 +384,8 @@ html,body{
 	background-color: white;	
 }
 .disabled{
-      color: #fff !important;
-    background-color: #0097d6 !important;
+    color: #fff !important;
+    background-color: #259b24 !important;
     border: solid 1px #333!important;
 }
 
@@ -591,12 +591,12 @@ img.center {
 }
 
 .u6 {
-  background-color:#fff;
+  background-color:#0097d6;
   height          : auto;
   padding         : 14px 0;
   display         : flex;
   align-items     : center;
-  border-bottom: 2px solid rgba(204, 204, 204, 0.59);
+  /* border-bottom: 2px solid rgba(204, 204, 204, 0.59); */
 }
 
 #u6font {
@@ -607,6 +607,7 @@ img.center {
   font-weight: 400;
   text-align : left;
   margin     : inherit;
+  color: white
 }
 
 .float-right {

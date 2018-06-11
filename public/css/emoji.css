@@ -56,8 +56,8 @@ img.emoji {
 .emoji-picker-icon {
     cursor: pointer;
     position: absolute;
-    right: 50px;
-    top: 22px;
+    right: 35px;
+    top: 20px;
     font-size: 20px;
     opacity: 0.7;
     z-index: 100;
@@ -98,8 +98,7 @@ img.emoji {
     height: 50px !important;
     max-height: 284px;
     overflow-y: auto;
-    max-width: 270px;
-    min-width: 270px;
+    min-width: 315px;
     line-height: 17px;
     border-bottom: 1px solid #1e78a5;
     -webkit-box-shadow: none;
@@ -130,8 +129,8 @@ img.emoji {
     position: absolute;
     right: 0;
     z-index: 999;
-    margin-top: -270px;
-    margin-right: -9px;
+    margin-top: -215px;
+    margin-right: 39px;
     width: 395px;
     overflow: hidden;
     border: 1px #dfdfdf solid;

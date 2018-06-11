@@ -133,7 +133,7 @@ define(['jquery', 'settings', 'utils', 'messageTemplates', 'cards', 'uuid'],
 										}
 										if (response.result.fulfillment.messages[i].type == 2) {
 											if (response.result.fulfillment.messages[i].replies && response.result.fulfillment.messages[i].replies.indexOf("Crime") != -1) {
-												response.result.fulfillment.messages[i].replies = [" Commercial Property", " Commercial General Liability", " Business interruption insurance"," Data Breach & Cyber Liability Coverage", " Crime", " Other Additional Commercial Coverages"]
+												response.result.fulfillment.messages[i].replies = [" Commercial Property", " Commercial General Liability", " Business interruption insurance", " Crime", " Data Breach & Cyber Liability Coverage",  " Other Additional Commercial Coverages"]
 												isMultipleQuickReplyFromApiai = true;
 												responsesSettings['isMultipleQuickReplyFromApiai'][0] = resIndex;
 												responsesSettings['isMultipleQuickReplyFromApiai'][1] = bottomFlag;

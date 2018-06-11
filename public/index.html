@@ -14,6 +14,24 @@
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="style/bootstrap.min.css" rel="stylesheet" />
 	<link href="style/propeller.min.css" rel="stylesheet" />
+
+
+	<link rel="shortcut icon" href="./avatar/macy.svg" />
+	<link rel="stylesheet" href="css/chatstyle.css">
+	<!--Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<!-- Propeller css -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+
+	<!--Animate css -->
+	<link rel="stylesheet" href="style/animate.min.css">
+
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/emoji.css" rel="stylesheet">
+
+
 	<!--[if lte IE 9]>
     <link href="./style/pru-com-main-split.min.css" rel="stylesheet"/>
  <![endif]-->
@@ -70,6 +88,47 @@
 			opacity: 0 !important;
 			pointer-events: none !important;
 		}
+
+		.chatPopup {
+			width: 480px;
+			display: inline-block;
+			position: fixed;
+			right: 15px;
+			height: 550px;
+			min-height: 550px;
+			max-height: 550px;
+			bottom: 82px;
+			overflow: hidden;
+			padding: 0 15px;
+			border: 1px solid #dadada;
+			transform: translateY(630px);
+			transition: all .2s ease-out;
+			/* display: none; */
+		}
+
+		.chatOpen {
+			transform: translateY(0px);
+		}
+
+		.searchBx {
+			width: 100%;
+			background-color: #fff;
+		}
+
+		.w800 {
+			width: 800px;
+		}
+
+		.textAreaSetUp {
+			width:100%;
+			position: relative;
+		}
+
+		.navigationSetUp {
+			position: absolute;
+			top: -6%;
+			right: 0%;
+		}
 	</style>
 	<script src="js/lib/jquery.min.js"></script>
 
@@ -79,11 +138,76 @@
 		$(function () {
 			$('[data-toggle="popover"]').popover()
 		})
+
 	</script>
 
 </head>
 
 <body>
+	<script data-main="js/require-setup" src="require.js"></script>
+	<script>
+
+		function bindJS() {
+			$('.chat-body').css('height', (window.innerHeight - 140) + 'px')
+			$('.main-container').css('opacity', '1');
+
+			//hide emoji popover on outside click
+			$(document).on('click', function (e) {
+				$('[data-toggle="popover"]').each(function () {
+					if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+						if ($("#" + $(this).attr("aria-describedby") + ":visible").length) {
+							$(this).trigger('click')
+						}
+					}
+				});
+			});
+
+			//triggered when modal is about to be shown
+			$('#center-dialog').on('show.bs.modal', function (e) {
+				$('#modal-img-holder').attr('src', $(e.relatedTarget).data('src'));
+				$('#modal-btndownload').attr('href', $(e.relatedTarget).data('src'));
+			});
+
+			$('.pdfClass').on('click', function () {
+				$('.classModal').css('display', 'block')
+			});
+
+			document.getElementById("btn-input").focus();
+
+			$(document.body).ready(function () {
+				var isMobile = (/android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase()));
+				if (isMobile) {
+					$("html").addClass("mobile-device");
+				} else {
+					$("html").addClass("desktop-device");
+				}
+			});
+
+			//   $(document).on("click", ".close", function () {
+			// 	console.log('YO ', $(parent.document).find("body footer div a#webChat iframe"));
+			// 	//console.log('PPPPP ', $(parent.document).find("body footer div a#webChat"));
+			// 	$("parent.document html body footer div a#webChat iframe").popover('hide');
+			//   });
+
+			//   $(document).on("click", ".close-icon-expand", function () {
+			// 	console.log('EXPAND ', $("parent.document html body footer div a#webChat iframe").css());
+			// 	$("parent.document html body footer div a#webChat iframe").css({"height" : "600 !important", "width" : "700 !important"});
+
+			//   });
+		}
+
+
+		require(['lib/jquery.min'], function () {
+			require(['lib/bootstrap.min'], function () {
+				require(['lib/propeller'], function () {
+					require(['src/app'], function () {
+						bindJS()
+					});
+				});
+			});
+		});
+
+	</script>
 
 	<div id="fundModal" class="modal fade" role="dialog">
 		<div class="modal-dialog modal">
@@ -106,17 +230,90 @@
 
 		</div>
 	</div>
+
+	<div class="chatPopup">
+
+		<div class="row u6">
+			<div class="col-xs-6">
+				<p id="u6font">Macy</p>
+			</div>
+			<div class="col-xs-6">
+				<img src="./images/close.svg" id="#closeChat" class="img-responsive close-icon-close">
+				<img src="./images/Expand.svg" class="img-responsive close-icon-expand">
+				<!-- style="padding-top: 10%; max-width: 75px;" -->
+			</div>
+		</div>
+
+		<div class="row no-scroll-x">
+			<div class="col-xs-12 chat-body scrollbar scrollbar-style">
+				<div class="chat-text-para col-xs-offset-4 col-xs-4 chat-welcome-message">
+					<img class="img-responsive" style="border-radius:5px;border:5px solid white;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.21), 0 6px 20px 0 rgba(0, 0, 0, 0);margin-top:10%;"
+					 src="./avatar/macy.svg" />
+				</div>
+				<ul id="msg_container" class="list-group pmd-list pmd-card-list hidden background-color-custom"></ul>
+			</div>
+		</div>
+
+		<div class="row searchBx">
+			<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-top: 10px">
+				<div class="form-group pmd-textfield pmd-textfield-floating-label">
+					<div class="input-group textAreaSetUp">
+						<textarea placeholder="Search for..." data-emojiable="true" rows="2" id="btn-input" class="col-md-10 col-lg-10 col-sm-10 col-xs-10 newclass" required maxlength="500"></textarea>
+					</div>
+					<div class="input-group-addon navigationSetUp">
+						<div class="menu" role="navigation">
+							<a id="btn-send-message" class="pmd-floating-action-btn btn btn-sm pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-primary send-button"
+							 href="#">
+								<span class="pmd-floating-hidden">Primary</span>
+								<img src="./images/Send.svg" width="30" height="30" class="img-responsive">
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!--<a href="#" onclick="window.open('https://chatbotasistant.herokuapp.com/?popup=1','chat70994705','width=400,height=650,resizable=yes');return false;">Click to chat</a>-->
 	<footer>
 		<div class="menu pmd-floating-action" role="navigation">
-			<a class="btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect  btn-primary popover" id="webChat" data-trigger="click" data-toggle="popover"
-			 data-placement="top" data-content="<iframe allowFullScreen src='./chat.html' height='530' width='400' style='border:none'></iframe>"
-			 data-html="true" href="javascript:void(0);">
+			<a class="btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect  btn-primary popover" id="webChat">
 				<span class="pmd-floating-hidden">Primary</span>
 				<img src="avatar/chatimg.png" style="margin-top: 10px;margin-left: -10px">
 			</a>
 		</div>
 	</footer>
+
+	<script src="js/lib/jquery.min.js"></script>
+	<script src="js/lib/bootstrap.min.js"></script>
+	<script src="js/lib/emoji-picker/config.js"></script>
+	<script src="js/lib/emoji-picker/util.js"></script>
+	<script src="js/lib/emoji-picker/jquery.emojiarea.js"></script>
+	<script src="js/lib/emoji-picker/emoji-picker.js"></script>
+	<script>
+
+		window.emojiPicker = new EmojiPicker({
+			emojiable_selector: '[data-emojiable=true]',
+			assetsPath: '/images/img',
+			popupButtonClasses: 'fa fa-smile-o'
+		});
+		window.emojiPicker.discover();
+
+		$("#webChat").on("click", function (e) {
+			e.preventDefault();
+			$(".chatPopup").toggleClass("chatOpen");
+			$(".chatPopup").removeClass("w800");
+		})
+		$(".close-icon-close").click(function () {
+			$(".chatPopup").removeClass("chatOpen");
+			$(".chatPopup").removeClass("w800");
+		})
+		$('.close-icon-expand').click(function () {
+			$(".chatPopup").toggleClass("w800");
+		});
+
+	</script>
+
 </body>
 
 </html>
