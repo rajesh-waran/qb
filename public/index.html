@@ -120,7 +120,7 @@
 		}
 
 		.textAreaSetUp {
-			width:100%;
+			width: 100%;
 			position: relative;
 		}
 
@@ -239,7 +239,8 @@
 			</div>
 			<div class="col-xs-6">
 				<img src="./images/close.svg" id="#closeChat" class="img-responsive close-icon-close">
-				<img src="./images/Expand.svg" class="img-responsive close-icon-expand">
+				<img src="./images/Maximize.svg" class="img-responsive close-icon-expand maxi">
+				<img src="./images/Minimize.svg" class="img-responsive close-icon-expand mini hidden">
 				<!-- style="padding-top: 10%; max-width: 75px;" -->
 			</div>
 		</div>
@@ -258,7 +259,8 @@
 			<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12" style="margin-top: 10px">
 				<div class="form-group pmd-textfield pmd-textfield-floating-label">
 					<div class="input-group textAreaSetUp">
-						<textarea placeholder="Search for..." data-emojiable="true" rows="2" id="btn-input" class="col-md-10 col-lg-10 col-sm-10 col-xs-10 newclass" required maxlength="500"></textarea>
+						<textarea placeholder="Search for..." data-emojiable="true" rows="2" id="btn-input" class="col-md-10 col-lg-10 col-sm-10 col-xs-10 newclass"
+						 required maxlength="500"></textarea>
 					</div>
 					<div class="input-group-addon navigationSetUp">
 						<div class="menu" role="navigation">
@@ -279,7 +281,7 @@
 		<div class="menu pmd-floating-action" role="navigation">
 			<a class="btn pmd-btn-fab pmd-btn-raised pmd-ripple-effect  btn-primary popover" id="webChat">
 				<span class="pmd-floating-hidden">Primary</span>
-				<img src="avatar/chatimg.png" style="margin-top: 10px;margin-left: -10px">
+				<img src="images/Chaticon.svg" style="margin-top: 10px;margin-left: -10px">
 			</a>
 		</div>
 	</footer>
@@ -310,6 +312,8 @@
 		})
 		$('.close-icon-expand').click(function () {
 			$(".chatPopup").toggleClass("w800");
+			$(".maxi").toggleClass("hidden");
+			$(".mini").toggleClass("hidden");
 		});
 
 	</script>

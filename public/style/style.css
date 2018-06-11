@@ -626,8 +626,8 @@ img.center {
   cursor      : pointer;
   visibility  : inherit;
   border-width: 0px;
-  width       : 25px;
-  height      : 20px;
+  width       : 24px;
+  height      : 24px;
 }
 
 .close-icon-expand {
@@ -638,8 +638,8 @@ img.center {
   cursor      : pointer;
   visibility  : inherit;
   border-width: 0px;
-  width       : 25px;
-  height      : 20px;
+  width       : 24px;
+  height      : 24px;
 }
 
 .textingbox {
@@ -685,4 +685,14 @@ img.center {
  }
  .list-group-item-text-bot {
   margin-bottom: 30px;
+ }
+
+ .chatBtt {
+   height: 72px;
+   width: 72px;
+ }
+
+ .footDiv {
+   bottom: 90%;
+   right: 10%;
  }
