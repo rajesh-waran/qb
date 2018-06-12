@@ -14,7 +14,6 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 			const remote = require('electron').remote;
 			const BrowserWindow = remote.BrowserWindow
 			var win1 = new BrowserWindow({ width: 800, height: 600, frame: false });
-
 		});
 
 		function sendMessage(refr, ev, refs) {
@@ -111,40 +110,6 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 			e.preventDefault();
 		});
 
-		$(document).on('click', '.cardresponsepayload', function (e) {
-			var payloadInput = $(this).data().cardpayloadbutton;
-			processor.askBot(payloadInput, function (error, html) {
-				if (error) {
-					console.log("error occured while processing your Request") //change into some inline fancy display, show error in chat window.
-				}
-				if (html) {
-					msg_container.append(html);
-					utils.scrollSmoothToBottom($('div.chat-body'));
-				}
-			});
-
-			e.preventDefault();
-		});
-
-		$(document).on('click', '.caroselresponsepayload', function (e) {
-			var payloadInput = $(this).data().carouselpayloadbutton;
-			console.log('Button Payload' + payloadInput);
-
-			processor.askBot(payloadInput, function (error, html) {
-				if (error) {
-					console.log("error occured while processing your Request") //change into some inline fancy display, show error in chat window.
-				}
-				if (html) {
-					msg_container.append(html);
-					utils.scrollSmoothToBottom($('div.chat-body'));
-
-				}
-			});
-
-			e.preventDefault();
-
-		});
-
 		$(document).on('click', '.apiQuickreplybtnPayload', function (e) {
 			var payloadInput = $(this).data().apiquickrepliespayload;
 
@@ -216,6 +181,7 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 			console.log('OKOK ', inputArr);
 			e.preventDefault();
 		});
+
 		$(document).on('click', '.multiple-click', function (r) {
 
 			$('.apiMultipleQuickreplybtnPayload').hide();

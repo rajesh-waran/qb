@@ -66,7 +66,6 @@ html,body{
 
 .user-txt-space {
     position: relative;
-    left: 10%;
 }
 
 .bot-txt-space {
@@ -283,7 +282,7 @@ html,body{
         color: #4d4c4c;
         font-size: 15px;
         overflow-wrap: break-word;
-        background-color: #e8fcfc;
+        background-color: #e8f4f9;
         max-width: 84%;
         display: inline-block;
         position: relative;
@@ -299,7 +298,7 @@ html,body{
      color: #4d4c4c;
      font-size: 15px;
      overflow-wrap: break-word;
-     background-color: #fff;
+     background-color: #dddddd;
      max-width: 84%;
      display: inline-block;
      position: relative;
@@ -341,7 +340,7 @@ html,body{
 
 .quick-replies-buttons {
   text-align: center;
-  margin-bottom: 14px;
+  margin-bottom: 2%;
 }
 
 .bot-res-timestamp-qr {
@@ -373,8 +372,7 @@ html,body{
 
 .pmd-btn-outline.btn-info{
   color: #4d4c4c;
-  background-color: #fff;
-  
+  background-color: #dddddd;
   text-transform: none;
 	outline: none;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.21), 0 6px 20px 0 rgba(0, 0, 0, 0)
@@ -693,6 +691,21 @@ img.center {
  }
 
  .footDiv {
-   bottom: 90%;
-   right: 10%;
+  display: inline-block;
+  position: fixed;
+  border: none;
+  background: #ededed;
+  height: 54px;
+  width: 54px;
+  top: 88%;
+  left: 90.6%;
+ }
+
+ #msg_container {
+  margin-right: -36px; 
+  margin-left: -16px;
+ }
+
+ .padding15 {
+  padding : 15px !important
  }

@@ -332,7 +332,7 @@ float:left;
 .btn-test:hover, .dropdown-toggle.btn-test:hover {
   background-color : #0088ff !important;
   padding: 15px !important;
-  color : #fff !important;
+  color : #dddddd !important;
   text-transform: none !important;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.21), 0 6px 20px 0 rgba(0, 0, 0, 0)
 }
@@ -340,13 +340,13 @@ float:left;
 .btn-testing, .dropdown-toggle.btn-testing {
    background-color : #03a9f4 !important;
   padding: 15px !important;
-  color : #fff !important;
+  color : #dddddd !important;
   text-transform: none !important;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.21), 0 6px 20px 0 rgba(0, 0, 0, 0)
 }
 
 .btn-test, .dropdown-toggle.btn-test {
-  background-color : #fff !important;
+  background-color : #dddddd !important;
   padding: 15px !important;
   color : #4d4c4c !important;
   text-transform: none !important;

@@ -16,7 +16,6 @@ define(['jquery', 'settings', 'utils', 'messageTemplates', 'cards', 'uuid'],
 					sessionId: uuidv1(),
 					lang: "en"
 				};
-
 			}
 
 			userSays(userInput, callback) {
@@ -29,13 +28,13 @@ define(['jquery', 'settings', 'utils', 'messageTemplates', 'cards', 'uuid'],
 					"className": 'pull-right'
 				}));
 			}
+
 			askBot(userInput, callback) {
 				if(userInput && userInput != ''){
 					this.userSays(userInput, callback);
-
 					this.options.query = userInput;
-					console.log(userInput);
-					console.log('OI ', JSON.stringify(this.options), config.chatServerURL);
+
+					console.log(userInput, JSON.stringify(this.options), config.chatServerURL);
 					$.ajax({
 						type: "POST",
 						url: config.chatServerURL,
@@ -50,17 +49,8 @@ define(['jquery', 'settings', 'utils', 'messageTemplates', 'cards', 'uuid'],
 							let isImage = false;
 							let isQuickReply = false;
 							let isQuickReplyFromApiai = false, isMultipleQuickReplyFromApiai = false;
-							let isVideo = false;
-							let videoUrl = null;
-							let isAudio = false;
-							let audioUrl = null;
 							let isList = false;
 							let resIndex = "0";
-							let isFile = false;
-							let fileUrl = null;
-							let isReceipt = false;
-							let receiptData = null;
-							let isLogOut = false;
 							let responsesSettings = {
 								"isCardorCarousel": [],
 								"isImage": [],
@@ -74,10 +64,7 @@ define(['jquery', 'settings', 'utils', 'messageTemplates', 'cards', 'uuid'],
 								"isQuickReply": []
 							};
 							let bottomFlag = false;
-							let logoutData = null;
 							let listData = null;
-							let login = null;
-							let isLogIn = false;
 							let webviewData = null;
 							let isWebView = false;
 							//To find Card || Carousel
@@ -107,8 +94,7 @@ define(['jquery', 'settings', 'utils', 'messageTemplates', 'cards', 'uuid'],
 										if (i == response.result.fulfillment.messages.length - 1) {
 											bottomFlag = true;
 										}
-									//	console.log('length', i, bottomFlag);
-								//		console.log('resIndex', resIndex);
+
 										if (response.result.fulfillment.messages[i].type == 0) {
 											let cardHTML = cards({
 												"payload": response.result.fulfillment.messages[i].speech,
@@ -153,35 +139,6 @@ define(['jquery', 'settings', 'utils', 'messageTemplates', 'cards', 'uuid'],
 											console.log(response.result.fulfillment.messages[i]);
 											//isQuickReply = (response.result.fulfillment.messages[i].payload.facebook.quick_replies.length > 0) ? true : false ;
 											//console.log(isQuickReply);
-											if (response.result.fulfillment.messages[i].payload.facebook.attachment.type == "video") {
-												isVideo = true;
-												videoUrl = response.result.fulfillment.messages[i].payload.facebook.attachment.payload.url;
-												responsesSettings['isVideo'][0] = resIndex;
-												responsesSettings['isVideo'][1] = bottomFlag;
-												//console.log(videoUrl);
-											}
-
-											if (response.result.fulfillment.messages[i].payload.facebook.attachment.type == "audio") {
-												isAudio = true;
-												audioUrl = response.result.fulfillment.messages[i].payload.facebook.attachment.payload.url;
-												//console.log(audioUrl);
-												responsesSettings['isAudio'][0] = resIndex;
-												responsesSettings['isAudio'][1] = bottomFlag;
-											}
-											if (response.result.fulfillment.messages[i].payload.facebook.attachment.type == "file") {
-												isFile = true;
-												fileUrl = response.result.fulfillment.messages[i].payload.facebook.attachment.payload.url;
-												responsesSettings['isFile'][0] = resIndex;
-												responsesSettings['isFile'][1] = bottomFlag;
-												//console.log(fileUrl);
-											}
-											if (response.result.fulfillment.messages[i].payload.facebook.attachment.payload.template_type == "receipt") {
-												isReceipt = true;
-												receiptData = response.result.fulfillment.messages[i].payload.facebook.attachment.payload;
-												responsesSettings['isReceipt'][0] = resIndex;
-												responsesSettings['isReceipt'][1] = bottomFlag;
-												//console.log(isReceipt);
-											}
 											if (response.result.fulfillment.messages[i].payload.facebook.attachment.payload.template_type == "list") {
 												console.log('list');
 												isList = true;
@@ -190,20 +147,8 @@ define(['jquery', 'settings', 'utils', 'messageTemplates', 'cards', 'uuid'],
 												responsesSettings['isList'][1] = bottomFlag;
 												//console.log(isReceipt);
 											}
-											if (response.result.fulfillment.messages[i].payload.facebook.attachment.payload.template_type == 'logout') {
-												isLogOut = true;
-												logoutData = response.result.fulfillment.messages[i].payload.facebook.attachment.payload;
-												console.log(isLogOut);
-												responsesSettings['isLogOut'][0] = resIndex;
-												responsesSettings['isLogOut'][1] = bottomFlag;
-											}
-
-											if (response.result.fulfillment.messages[i].payload.facebook.attachment.payload.template_type == 'login') {
-												login = response.result.fulfillment.messages[i].payload.facebook.attachment.payload.elements;
-												isLogIn = true;
-												responsesSettings['isLogIn'][0] = resIndex;
-												responsesSettings['isLogIn'][1] = bottomFlag;
-											}
+											
+											
 											if (['button', 'generic'].indexOf(response.result.fulfillment.messages[i].payload.facebook.attachment.payload.template_type) >= 0) {
 												console.log(JSON.stringify(response));
 												buttons = response.result.fulfillment.messages[i].payload.facebook.attachment.payload.buttons;
@@ -229,37 +174,7 @@ define(['jquery', 'settings', 'utils', 'messageTemplates', 'cards', 'uuid'],
 									callback(null, cardHTML);
 								}
 							}
-							//Carousel
-							if (isCardorCarousel) {
-								console.log(responsesSettings['isCardorCarousel']);
-								if (count == 1) {
-									let cardHTML = cards({
-										"payload": response.result.fulfillment.messages,
-										"senderName": config.botTitle,
-										"senderAvatar": config.botAvatar,
-										"time": utils.currentTime(),
-										"responseIndex": responsesSettings['isCardorCarousel'][0],
-										"bottomIcon": responsesSettings['isCardorCarousel'][1],
-										"buttons": hasbutton,
-										"className": ''
-									}, "card");
-									callback(null, cardHTML);
-								}
-								else {
-									let carouselHTML = cards({
-										"payload": response.result.fulfillment.messages,
-										"senderName": config.botTitle,
-										"senderAvatar": config.botAvatar,
-										"time": utils.currentTime(),
-										"responseIndex": responsesSettings['isCardorCarousel'][0],
-										"bottomIcon": responsesSettings['isCardorCarousel'][1],
-										"buttons": hasbutton,
-										"className": ''
-
-									}, "carousel");
-									callback(null, carouselHTML);
-								}
-							}
+							
 							//Image Response
 							if (isImage) {
 								let cardHTML = cards(response.result.fulfillment.messages, "image");
@@ -303,43 +218,6 @@ define(['jquery', 'settings', 'utils', 'messageTemplates', 'cards', 'uuid'],
 								}, "multiplequickreplyfromapiai");
 								callback(null, cardHTML);
 							}
-
-							if (isVideo) {
-								let cardHTML = cards({
-									"payload": videoUrl,
-									"senderName": config.botTitle,
-									"senderAvatar": config.botAvatar,
-									"time": utils.currentTime(),
-									"responseIndex": responsesSettings['isVideo'][0],
-									"bottomIcon": responsesSettings['isVideo'][1],
-									"className": ''
-								}, "video");
-								callback(null, cardHTML);
-							}
-							if (isAudio) {
-								let cardHTML = cards({
-									"payload": audioUrl,
-									"senderName": config.botTitle,
-									"senderAvatar": config.botAvatar,
-									"time": utils.currentTime(),
-									"responseIndex": responsesSettings['isAudio'][0],
-									"bottomIcon": responsesSettings['isAudio'][1],
-									"className": ''
-								}, "audio");
-								callback(null, cardHTML);
-							}
-							if (isFile) {
-								let cardHTML = cards({
-									"payload": fileUrl,
-									"senderName": config.botTitle,
-									"senderAvatar": config.botAvatar,
-									"time": utils.currentTime(),
-									"responseIndex": responsesSettings['isFile'][0],
-									"bottomIcon": responsesSettings['isFile'][1],
-									"className": ''
-								}, "file");
-								callback(null, cardHTML);
-							}
 							if (isList) {
 								console.log('cards calling - list');
 								let cardHTML = cards({
@@ -353,62 +231,6 @@ define(['jquery', 'settings', 'utils', 'messageTemplates', 'cards', 'uuid'],
 								}, "list");
 								callback(null, cardHTML);
 							}
-							if (isReceipt) {
-								let cardHTML = cards({
-									"payload": receiptData,
-									"senderName": config.botTitle,
-									"senderAvatar": config.botAvatar,
-									"time": utils.currentTime(),
-									"responseIndex": responsesSettings['isReceipt'][0],
-									"bottomIcon": responsesSettings['isReceipt'][1],
-									"className": ''
-								}, "receipt");
-								callback(null, cardHTML);
-							}
-							if (isLogOut) {
-								console.log("ISWEB logout:::" + $('#webchat').context.URL);
-								let cardHTML = cards({
-									"payload": logoutData,
-									"senderName": config.botTitle,
-									"senderAvatar": config.botAvatar,
-									"time": utils.currentTime(),
-									"responseIndex": responsesSettings['isLogOut'][0],
-									"bottomIcon": responsesSettings['isLogOut'][1],
-									"className": '',
-									"isWeb": $('#webchat').context.URL
-								}, "logout");
-								callback(null, cardHTML);
-							}
-							if (isWebView) {
-								console.log("ISWEB:::" + $('#webchat').context.URL);
-								let cardHTML = cards({
-									"payload": webviewData,
-									"senderName": config.botTitle,
-									"senderAvatar": config.botAvatar,
-									"time": utils.currentTime(),
-									"responseIndex": responsesSettings['isWebView'][0],
-									"bottomIcon": responsesSettings['isWebView'][1],
-									"className": '',
-									"isWeb": $('#webchat').context.URL
-								}, "webview");
-								callback(null, cardHTML);
-							}
-							if (isLogIn) {
-								console.log("ISWEB:::" + $('#webchat').context.URL);
-								let cardHTML = cards({
-									"payload": login,
-									"senderName": config.botTitle,
-									"senderAvatar": config.botAvatar,
-									"responseIndex": responsesSettings['isLogIn'][0],
-									"bottomIcon": responsesSettings['isLogIn'][1],
-									"time": utils.currentTime(),
-									"className": '',
-									"isWeb": $('#webchat').context.URL
-								}, "login");
-								callback(null, cardHTML);
-							}
-
-
 						},
 						error: function () {
 							callback("Internal Server Error", null);
