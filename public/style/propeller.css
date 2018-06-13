@@ -1576,7 +1576,7 @@ h2.pmd-card-title-text {
 
 /*paper input*/
 .form-group.pmd-textfield {
-  margin-bottom: 16px;
+  margin-bottom: 25px;
   line-height: 22px;
 }
 .pmd-textfield .form-control {

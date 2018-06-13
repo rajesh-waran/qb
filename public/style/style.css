@@ -23,7 +23,7 @@ html,body{
 }
 
 .chat-body {
-    height: 382px !important;
+    height: 402px !important;
     overflow-y: auto;
     background-color: #fff;
     display: block;
@@ -342,7 +342,7 @@ html,body{
 }
 
 .quick-replies-buttons {
-  text-align: center;
+  /*text-align: center;*/
   margin-bottom: 4%;
   margin-top: -4%;
 }
@@ -699,7 +699,7 @@ img.center {
   position: fixed;
   border: none;
   background: #ededed;
-  height: 54px;
+  height: 0px;
   width: 54px;
   top: 88%;
   left: 90.6%;

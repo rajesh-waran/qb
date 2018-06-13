@@ -111,7 +111,7 @@
 		}
 
 		.searchBx {
-			width: 100%;
+			width: inherit;
 			background-color: #fcfcfc;
 		}
 
@@ -126,8 +126,8 @@
 
 		.navigationSetUp {
 			position: absolute;
-			top: -6%;
-			right: 0%;
+			top: 11px;
+			right: 16px;
 		}
 	</style>
 	<script src="js/lib/jquery.min.js"></script>
@@ -263,13 +263,9 @@
 						 required maxlength="1500"></textarea>
 					</div>
 					<div class="input-group-addon navigationSetUp">
-						<div class="menu" role="navigation">
-							<a id="btn-send-message" class="pmd-floating-action-btn btn btn-sm pmd-btn-fab pmd-btn-raised pmd-ripple-effect btn-primary send-button"
-							 href="#">
-								<span class="pmd-floating-hidden">Primary</span>
-								<img src="./images/Send.svg" width="30" height="30" class="img-responsive">
+							<a id="btn-send-message" class="send-button">
+								<img src="./images/Send.svg" width="30" height="30">
 							</a>
-						</div>
 					</div>
 				</div>
 			</div>

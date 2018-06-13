@@ -163,6 +163,15 @@ input {
   text-decoration:underline;
   cursor:pointer;
 }
+
+.send-button:hover {
+  cursor: pointer;
+}
+
+.popover:hover, .popover:active {
+  cursor: pointer;
+}
+
 .tooltip:hover ~ .help{
   display:inline-block;
 }
@@ -310,10 +319,10 @@ float:left;
 }
 
 .send-button {
-  background-color: #fff !important;
-  box-shadow: none !important;
-  margin-top: 16px !important;
-  margin-left: 5px;
+  /*background-color: #fff !important;
+  box-shadow: none !important;*/
+  margin-top: 5px !important;
+  margin-left: 0px;
 }
 
 .padding-10px {
