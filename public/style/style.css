@@ -25,7 +25,7 @@ html,body{
 .chat-body {
     height: 382px !important;
     overflow-y: auto;
-    background-color: #ebeded;
+    background-color: #fff;
     display: block;
     overflow-x: hidden;
     border-bottom: 2px solid rgba(204, 204, 204, 0.59);
@@ -232,7 +232,7 @@ html,body{
 }
 
 .background-color-custom {
-  background-color: #ebeded;
+  background-color: #fff;
 }
 
 .custom-quick-reply-background {
@@ -283,6 +283,8 @@ html,body{
         font-size: 15px;
         overflow-wrap: break-word;
         background-color: #e8f4f9;
+        border: 1px solid #dddddd;
+        border-radius: 10px 0px 10px 10px;
         max-width: 84%;
         display: inline-block;
         position: relative;
@@ -298,7 +300,9 @@ html,body{
      color: #4d4c4c;
      font-size: 15px;
      overflow-wrap: break-word;
-     background-color: #dddddd;
+     background-color: #fff;
+     border: 1px solid #dddddd;
+     border-radius: 0px 10px 10px 10px;
      max-width: 84%;
      display: inline-block;
      position: relative;
@@ -372,7 +376,7 @@ html,body{
 
 .pmd-btn-outline.btn-info{
   color: #4d4c4c;
-  background-color: #dddddd;
+  background-color: #fff;
   text-transform: none;
 	outline: none;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.21), 0 6px 20px 0 rgba(0, 0, 0, 0)
