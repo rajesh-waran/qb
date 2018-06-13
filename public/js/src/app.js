@@ -187,6 +187,7 @@ define(['jquery', 'settings', 'apiService', 'utils'], function ($, config, apiSe
 			$('.apiMultipleQuickreplybtnPayload').hide();
 			$('.multiple-click').hide();
 			processor.askBot(inputArr.toString(), function (error, html) {
+				inputArr = [];
 				if (error) {
 					console.log("error occured while processing your Request") //change into some inline fancy display, show error in chat window.
 				}
