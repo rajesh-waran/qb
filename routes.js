@@ -1,9 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var request = require('request');
-var fs = require("fs");
-var request = require('request');
-var path = require("path");
 var config = require("./config");
 
 router.get('/', function (req, res) {
