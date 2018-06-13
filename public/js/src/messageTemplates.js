@@ -73,16 +73,16 @@ define(["utils", "settings"], function (utils, settings) {
                     quickRepliesHtml += `<p class="list-group-item-quick-reply-space${data.color}">${data.payload[i].payload.facebook.text}</p><div class="quick-replies-buttons">`;
                     for (var j = 0; j < data.payload[i].payload.facebook.quick_replies.length; j++) {
                         if (data.payload[i].payload.facebook.quick_replies[j].hasOwnProperty('payload')) {
-                            quickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-info QuickreplybtnPayload" data-quickRepliesPayload="${data.payload[i].payload.facebook.quick_replies[j].payload}">${data.payload[i].payload.facebook.quick_replies[j].title}</button>`
+                            quickRepliesHtml += `<button type="button"  class="btn btn-quick pmd-ripple-effect QuickreplybtnPayload" data-quickRepliesPayload="${data.payload[i].payload.facebook.quick_replies[j].payload}">${data.payload[i].payload.facebook.quick_replies[j].title}</button>`
                         }
                         else if (data.payload[i].payload.facebook.quick_replies[j].hasOwnProperty('url')) {
                             console.log("URL : " + data.payload[i].payload.facebook.quick_replies[j].url);
-                            quickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-info QuickreplybtnPayload" onClick="window.location.href='${data.payload[i].payload.facebook.quick_replies[j].url}'; 'height=400,width=600'" >${data.payload[i].payload.facebook.quick_replies[j].title}</button>`
+                            quickRepliesHtml += `<button type="button"  class="btn btn-quick pmd-ripple-effect QuickreplybtnPayload" onClick="window.location.href='${data.payload[i].payload.facebook.quick_replies[j].url}'; 'height=400,width=600'" >${data.payload[i].payload.facebook.quick_replies[j].title}</button>`
 
                         }
                         else if (data.payload[i].payload.facebook.quick_replies[j].hasOwnProperty('tab')) {
                             console.log("TAB : " + data.payload[i].payload.facebook.quick_replies[j].tab);
-                            quickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-info QuickreplybtnPayload" onClick="window.open('${data.payload[i].payload.facebook.quick_replies[j].tab}','_blank'); " > ${data.payload[i].payload.facebook.quick_replies[j].title}</button>`
+                            quickRepliesHtml += `<button type="button"  class="btn btn-quick pmd-ripple-effect QuickreplybtnPayload" onClick="window.open('${data.payload[i].payload.facebook.quick_replies[j].tab}','_blank'); " > ${data.payload[i].payload.facebook.quick_replies[j].title}</button>`
                         }
                     }
                 }
@@ -175,11 +175,11 @@ define(["utils", "settings"], function (utils, settings) {
 
                 if (qReply[i].replies.indexOf("Risk Class") != -1) {
                     for (let j = 0; j < qReply[i].replies.length; j++) {
-                            apiquickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-info .pmd-btn-fab apiQuickreplybtnPayload" data-apiquickRepliesPayload="${qReply[i].replies[j]}"><img src="./images/queryTypes/${qReply[i].replies[j].replace(/ /g, '')}.svg" class="img-responsive quick-reply-icon"> <div class="quick-reply-button-text">${qReply[i].replies[j]}</div></button>`
+                            apiquickRepliesHtml += `<button type="button"  class="btn btn-quick .pmd-btn-fab apiQuickreplybtnPayload" data-apiquickRepliesPayload="${qReply[i].replies[j]}"><img src="./images/queryTypes/${qReply[i].replies[j].replace(/ /g, '')}.svg" class="img-responsive quick-reply-icon"> <div class="quick-reply-button-text">${qReply[i].replies[j]}</div></button>`
                     }
                 } else {
                     for (let j = 0; j < qReply[i].replies.length; j++) {
-                            apiquickRepliesHtml += `<button type="button"  class="btn pmd-btn-outline pmd-ripple-effect btn-info .pmd-btn-fab apiQuickreplybtnPayload" data-apiquickRepliesPayload="${qReply[i].replies[j]}">${qReply[i].replies[j]}</button>`
+                            apiquickRepliesHtml += `<button type="button"  class="btn btn-quick .pmd-btn-fab apiQuickreplybtnPayload" data-apiquickRepliesPayload="${qReply[i].replies[j]}">${qReply[i].replies[j]}</button>`
                     }
                 }
             }

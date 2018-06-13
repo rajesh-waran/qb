@@ -100,7 +100,7 @@ img.emoji {
     overflow-y: auto;
     min-width: 315px;
     line-height: 17px;
-    border-bottom: 1px solid #1e78a5;
+    /* border-bottom: 1px solid #1e78a5; */
     -webkit-box-shadow: none;
     box-shadow: none;
     -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
