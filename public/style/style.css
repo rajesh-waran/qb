@@ -722,3 +722,95 @@ img.center {
  .padding15 {
  padding: 15px !important
  }
+
+
+ .chatIcon {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+}
+
+.popover {
+  max-width: 1200px;
+  padding: 0% !important;
+  border-radius: 0px;
+}
+
+.style-3::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #F5F5F5;
+}
+
+.style-3::-webkit-scrollbar {
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+.style-3::-webkit-scrollbar-thumb {
+  background-color: #000000;
+}
+
+.popover-content {
+  padding: 0px;
+}
+
+.modal-content {
+  padding: 0px;
+}
+
+.table.fund-switch-cllss>tbody>tr>td,
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>thead>tr>th {
+  padding: 7px
+}
+
+iframe#_hjRemoteVarsFrame {
+  display: none !important;
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.chatPopup {
+  width: 480px;
+  display: inline-block;
+  position: fixed;
+  right: 2%;
+  height: 550px;
+  min-height: 550px;
+  max-height: 550px;
+  bottom: 11%;
+  overflow: hidden;
+  padding: 0 15px;
+  border: 1px solid #dadada;
+  transform: translateY(800px);
+  transition: all .2s ease-out;
+  /* display: none; */
+}
+
+.chatOpen {
+  transform: translateY(0px);
+}
+
+.searchBx {
+  width: inherit;
+  background-color: #fcfcfc;
+}
+
+.w800 {
+  width: 800px;
+}
+
+.textAreaSetUp {
+  width: 100%;
+  position: relative;
+}
+
+.navigationSetUp {
+  position: absolute;
+  top: 11px;
+  right: 16px;
+}
