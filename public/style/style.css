@@ -23,7 +23,7 @@ html,body{
 }
 
 .chat-body {
- height : 402px !important;
+ height : 390px !important;
  overflow-y : auto;
  background-color: #fff;
  display : block;
@@ -775,7 +775,8 @@ iframe#_hjRemoteVarsFrame {
 }
 
 .chatPopup {
- 
+
+  /* display: none; */
 }
 
 .chatOpen {
