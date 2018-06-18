@@ -7,7 +7,7 @@ This file is part of the Innovation LAB - Offline Bot.
 
 
 define({    
-    chatServerURL : "http://ec2-35-154-116-87.ap-south-1.compute.amazonaws.com:8005/chatDialogflowAPI",
+    chatServerURL : "https://ec2-35-154-116-87.ap-south-1.compute.amazonaws.com:8005/chatDialogflowAPI",
 	accessToken:"123445",
     applicationTitle: "Quote & Buy",
     userTitle : "Me",
